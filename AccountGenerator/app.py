@@ -8,7 +8,7 @@ def get_test():
 
 @app.route('/post-test', methods=['POST'])
 def post_test():
-	print(request.json)
+	country = request.json()["Country"]
 	return "OK\n"
 
 if __name__ == '__main__':
