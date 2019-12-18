@@ -1,16 +1,5 @@
-from flask import Flask, request
-
-app = Flask(__name__)
-
-@app.route('/', methods = ['GET'])
-def get_test():
-	return {"name":"Bob"}
-
-@app.route('/post-test', methods=['POST'])
-def post_test():
-	print(request.json)
-	return "OK\n"
+from application import app
 
 if __name__ == '__main__':
-	app.run(port=5003, host='0.0.0.0')
+	app.run(debug=True, port=5003, host='0.0.0.0')
 
