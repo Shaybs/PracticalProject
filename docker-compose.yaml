@@ -14,14 +14,20 @@ services:
       - frontend-service
   frontend-service:
     image: frontend
+    container_name: frontend
     build: FrontEnd/
-    ports:
-    - target: 5003
-      published: 5003
     environment:
     - USERNAME=${USERNAME}
     - PASSWORD=${PASSWORD}
     - MYSQL_URL=${MYSQL_URL}
     - MYSQL_DB=${MYSQL_DB}
     - SECRET_KEY=${SECRET_KEY}
+  country-service:
+    image: country-service
+    container_name: country
+    build: CountryGenerator
+  account-service:
+    image: account-service
+    container_name: account
+    build: AccountGenerator/
 
