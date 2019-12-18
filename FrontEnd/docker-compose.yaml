@@ -1,0 +1,13 @@
+version: "3.7"
+services:
+  frontend-service:
+    image: frontend
+    ports:
+    - target: 5003
+      published: 5003
+    environment:
+    - USERNAME=root
+    - PASSWORD=rootXYZ
+    - MYSQL_URL=35.197.196.36
+    - MYSQL_DB=bookapp
+    - SECRET_KEY="hjd9848rujjuuIJDF84UjyeKMCD938JUudK"

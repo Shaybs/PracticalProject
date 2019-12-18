@@ -1,0 +1,14 @@
+version: "3.7"
+services:
+  frontend-service:
+    image: frontend
+    build: FrontEnd/
+    ports:
+    - target: 5003
+      published: 5003
+    environment:
+    - USERNAME=${USERNAME}
+    - PASSWORD=${PASSWORD}
+    - MYSQL_URL=${MYSQL_URL}
+    - MYSQL_DB=${MYSQL_DB}
+    - SECRET_KEY=${SECRET_KEY}
