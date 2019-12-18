@@ -10,7 +10,7 @@ services:
     - type: bind
       source: ./nginx/nginx.conf
       target: /etc/nginx/nginx.conf
-    depends on:
+    depends_on:
       - frontend-service
   frontend-service:
     image: frontend
