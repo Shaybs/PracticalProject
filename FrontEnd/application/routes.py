@@ -22,3 +22,13 @@ def get_test():
 def post_test():
     print(request.json)
     return "OK\n"
+
+@app.route('/', methods=['GET'])
+def test():
+	requests.post('http://localhost:5001/post-test', json={"name":"Bob"})
+	
+	shuaib = requests.post('http://central-service:5000/post-test', json={"Country":"Britain"})
+	if shuaib == True:
+		pass
+		#shuaib.json()
+	return "OK\n"
