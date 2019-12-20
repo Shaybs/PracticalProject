@@ -133,7 +133,6 @@ class TestFrontEnd(TestBase):
 		response = self.client.get(url_for('login'))
 		self.assertIn(b"Login", response.data)
 
-
 class ModelTests(TestBase):
 	
 	#Test whether a new list can be added and the count of the table to verify the addition
