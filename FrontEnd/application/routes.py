@@ -26,10 +26,10 @@ def post_test():
 
 @app.route('/new-test', methods=['GET'])
 def test():
-	requests.post('http://central-service:5000/post-test', json={"name":"Bob"})
+	#requests.post('http://central-service:5000/post-test', json={"name":"Bob"})
 	
 	country = requests.post('http://central-service:5000/post-test', json={"Country":"Britain"})
-	if country == True:
-		pass
+	if country.ok:
+		print(country.json()["response"])
 		#shuaib.json()
 	return "OK\n"
