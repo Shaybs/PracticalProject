@@ -27,8 +27,8 @@ def post_test():
 def test():
 	requests.post('http://localhost:5001/post-test', json={"name":"Bob"})
 	
-	shuaib = requests.post('http://central-service:5000/post-test', json={"Country":"Britain"})
-	if shuaib == True:
+	country = requests.post('http://central-service:5000/post-test', json={"Country":"Britain"})
+	if country == True:
 		pass
 		#shuaib.json()
 	return "OK\n"
