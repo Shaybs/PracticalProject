@@ -1,5 +1,6 @@
 from flask import abort, render_template, redirect, url_for, request, flash
 from application import app
+import requests
 
 @app.route('/', methods=['GET'])
 def test():

@@ -1,5 +1,6 @@
 from flask import abort, render_template, redirect, url_for, request, flash
 from application import app
+import requests
 
 #Render the home page
 @app.route('/')
@@ -25,7 +26,7 @@ def post_test():
 
 @app.route('/new-test', methods=['GET'])
 def test():
-	requests.post('http://localhost:5001/post-test', json={"name":"Bob"})
+	requests.post('http://central-service:5000/post-test', json={"name":"Bob"})
 	
 	country = requests.post('http://central-service:5000/post-test', json={"Country":"Britain"})
 	if country == True:
