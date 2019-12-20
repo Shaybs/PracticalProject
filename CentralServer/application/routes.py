@@ -15,5 +15,4 @@ def test():
 @app.route('/post-test', methods=['POST'])
 def post_test():
 	country = request.get_json()["Country"]
-	print(country)
 	return {"response":country}
