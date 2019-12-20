@@ -30,6 +30,6 @@ def test():
 	
 	country = requests.post('http://central-service:5000/post-test', json={"Country":"Britain"})
 	if country.ok:
-		print(country.json()["response"])
+		return country.json()["response"]
 		#shuaib.json()
 	return "OK\n"
