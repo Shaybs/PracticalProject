@@ -1,7 +1,6 @@
 from flask import abort, render_template, redirect, url_for, request, flash
 from application import app
 
-
 @app.route('/', methods=['GET'])
 def test():
 	requests.post('http://localhost:5001/post-test', json={"name":"Bob"})
@@ -10,4 +9,9 @@ def test():
 	if shuaib == True:
 		pass
 		#shuaib.json()
+	return "OK\n"
+
+@app.route('/post-test', methods=['POST'])
+def post_test():
+	country = request.json()["Country"]
 	return "OK\n"

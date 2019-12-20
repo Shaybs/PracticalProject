@@ -23,7 +23,7 @@ def post_test():
     print(request.json)
     return "OK\n"
 
-@app.route('/', methods=['GET'])
+@app.route('/new-test', methods=['GET'])
 def test():
 	requests.post('http://localhost:5001/post-test', json={"name":"Bob"})
 	
