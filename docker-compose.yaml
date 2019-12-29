@@ -1,17 +1,17 @@
 version: "3.7"
 services:
-  nginx:
-    image: nginx:latest
-    container_name: nginx
-    ports:
-    - target: 80
-      published: 80
-    volumes:
-    - type: bind
-      source: ./nginx/nginx.conf
-      target: /etc/nginx/nginx.conf
-    depends_on:
-      - frontend-service
+#  nginx:
+#    image: nginx:latest
+#    container_name: nginx
+#    ports:
+#    - target: 80
+#      published: 80
+#    volumes:
+#    - type: bind
+#      source: ./nginx/nginx.conf
+#      target: /etc/nginx/nginx.conf
+#    depends_on:
+#      - frontend-service
   frontend-service:
     image: frontend
     container_name: frontend
