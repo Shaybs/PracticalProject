@@ -8,8 +8,7 @@ def get_test():
 
 @app.route('/post-test', methods=['POST'])
 def post_test():
-	name = request.json()["name"]
-	print(request.json)
+	name = request.get_json()["name"]
 	return {"name":name}
 
 if __name__ == '__main__':
