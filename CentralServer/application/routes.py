@@ -2,14 +2,18 @@ from flask import abort, render_template, redirect, url_for, request, flash
 from application import app
 import requests
 
-@app.route('/', methods=['GET'])
-def test():
-	requests.post('http://localhost:5001/post-test', json={"name":"Bob"})
-	
-	shuaib = requests.post('http://localhost:5002/post-test', json={"Country":"Britain"})
-	if shuaib == True:
-		pass
-		#shuaib.json()
+@app.route('/test-5002', methods=['POST'])
+def test_account():	
+	country = requests.post('http://localhost:5002/post-test', json={"Country":"Pakistan"})
+	if country.ok:
+		return country.json()["country"]
+	return "OK\n"
+
+@app.route('/test-5001', methods=['POST'])
+def test_country():
+	name = requests.post('http://localhost:5001/post-test', json={"name":"Bob"})
+	if name.ok:
+		return name.json()["name"]
 	return "OK\n"
 
 @app.route('/post-test', methods=['POST'])
