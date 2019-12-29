@@ -17,24 +17,24 @@ def about():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
 	form = LoginForm()
-    return render_template('login.html', title='Login', form=form)
+	return render_template('login.html', title='Login', form=form)
 
 #Render the Registration
 @app.route('/register', methods=['GET', 'POST'])
 def register():
 	form = RegistrationForm()
-    return render_template('register.html', title='Register', form=form)
+	return render_template('register.html', title='Register', form=form)
 
 #Render the test page
 @app.route('/test', methods = ['GET'])
 def get_test():
-    return {"name":"Bob"}
+	return {"name":"Bob"}
 
 #Render the post-test page
 @app.route('/post-test', methods=['POST'])
 def post_test():
-    print(request.json)
-    return "OK\n"
+	print(request.json)
+	return "OK\n"
 
 @app.route('/new-test', methods=['GET', 'POST'])
 def test():
