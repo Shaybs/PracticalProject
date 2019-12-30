@@ -1,4 +1,12 @@
-import unit test
+from application import app
+import unittest
+
+class TestCase(TestCase):
+
+	#Test the HTTP response for the home page
+	def  test_home_view(self):
+		response = self.client.get(url_for('home'))
+		self.assertEqual(response.status_code, 200)
 
 #One test for whether the Account number is made only integers
 #One test for the length of Account number

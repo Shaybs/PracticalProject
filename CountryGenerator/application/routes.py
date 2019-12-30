@@ -2,7 +2,7 @@ from flask import Flask, request
 from application import app
 import requests
 
-@app.route('/', methods = ['POST'])
+@app.route('/', methods = ['GET', 'POST'])
 def get_test():
 	return {"name":"Bob"}
 
