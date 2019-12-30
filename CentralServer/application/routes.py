@@ -4,16 +4,16 @@ import requests
 
 @app.route('/test-5002', methods=['GET','POST'])
 def test_account():	
-	country = requests.post('http://account-service:5002/post-test', json={"Country":"Pakistan"})
-	if country.ok:
-		return country.json()["country"]
+	account = requests.post('http://account-service:5002/post-account', json={"Account":6667})
+	if account.ok:
+		return country.json()["Account"]
 	return "OK\n"
 
 @app.route('/test-5001', methods=['GET','POST'])
 def test_country():
-	name = requests.post('http://country-service:5001/post-test', json={"name":"Bob"})
-	if name.ok:
-		return name.json()["name"]
+	country = requests.post('http://country-service:5001/post-test', json={"Country":"Belarus"})
+	if country.ok:
+		return country.json()["Country"]
 	return "OK\n"
 
 @app.route('/post-test', methods=['POST'])

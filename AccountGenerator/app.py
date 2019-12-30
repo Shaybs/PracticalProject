@@ -1,4 +1,5 @@
 from flask import Flask, request
+import requests
 
 app = Flask(__name__)
 
@@ -8,9 +9,8 @@ def get_test():
 
 @app.route('/post-test', methods=['POST'])
 def post_test():
-	country = request.get_json()["Country"]
-	print(country)
-	return {"country":country}
+	account = request.get_json()["Account"]
+	return {"Account":account}
 
 if __name__ == '__main__':
 	app.run(port=5002, host='0.0.0.0')
