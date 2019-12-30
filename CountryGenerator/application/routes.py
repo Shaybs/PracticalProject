@@ -1,4 +1,5 @@
 from flask import Flask, request
+from application import app
 import requests
 
 app = Flask(__name__)
@@ -11,8 +12,3 @@ def get_test():
 def post_test():
 	country = request.get_json()["Country"]
 	return {"Country":country}
-
-from application import app
-
-if __name__ == '__main__':
-	app.run(port=5001, host='0.0.0.0')
