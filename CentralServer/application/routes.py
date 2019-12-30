@@ -6,7 +6,7 @@ import requests
 def test_account():	
 	account = requests.post('http://account-service:5002/post-account', json={"Account":6667})
 	if account.ok:
-		return country.json()["Account"]
+		return account.json()["Account"]
 	return "OK\n"
 
 @app.route('/test-5001', methods=['GET','POST'])
