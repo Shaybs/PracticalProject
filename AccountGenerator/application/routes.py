@@ -3,10 +3,6 @@ from application import app
 import requests
 import random
 
-@app.route('/', methods = ['GET', 'POST'])
-def get_test():
-	return {"name" : "Bob"}
-
 @app.route('/post-account-6', methods=['POST'])
 def post_account6():
 	country = request.get_json()["Country"]

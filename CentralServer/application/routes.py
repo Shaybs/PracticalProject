@@ -30,7 +30,20 @@ def test_iban8():
 		return iban.json()["IBAN"]
 	return "OK\n"
 
+@app.route('/post-iban', methods=['POST'])
+def post_iban():
+	country = request.get_json()["Country"]
+	account = requests.post('http://account-service:5002/post-account-8', json={"Country":country})
+	iban_account = account.json()["Account"]
+	iban = requests.post('http://country-service:5001/post-iban-8', json={"Country":country})
+	iban_preamble = iban.json()["IBAN"]
+	iban = iban_preamble + iban_account
+	return {"IBAN":iban}
+
 @app.route('/post-test', methods=['POST'])
 def post_test():
 	country = request.get_json()["Country"]
 	return {"response":country}
+
+
+

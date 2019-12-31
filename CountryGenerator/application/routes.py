@@ -5,15 +5,6 @@ import random
 
 letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
-@app.route('/', methods = ['GET', 'POST'])
-def get_test():
-	return {"name" : "Bob"}
-
-@app.route('/post-test', methods=['POST'])
-def post_test():
-	country = request.get_json()["Country"]
-	return {"Country":country}
-
 @app.route('/post-iban-4', methods=['POST'])
 def post_iban4():
 	country = request.get_json()["Country"]
