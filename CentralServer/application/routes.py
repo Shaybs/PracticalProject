@@ -2,9 +2,16 @@ from flask import Flask, request
 from application import app
 import requests
 
-@app.route('/test-5002', methods=['GET','POST'])
+@app.route('/get_account_6', methods=['GET','POST'])
 def test_account():	
-	account = requests.post('http://account-service:5002/post-account', json={"Country":"Pakistan"})
+	account = requests.post('http://account-service:5002/post-account-6', json={"Country":"Pakistan"})
+	if account.ok:
+		return account.json()["Account"]
+	return "OK\n"
+
+@app.route('/get_account_8', methods=['GET','POST'])
+def test_account():	
+	account = requests.post('http://account-service:5002/post-account-8', json={"Country":"Pakistan"})
 	if account.ok:
 		return account.json()["Account"]
 	return "OK\n"
