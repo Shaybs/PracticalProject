@@ -39,9 +39,17 @@ def post_test():
 @app.route('/new-test', methods=['GET', 'POST'])
 def test():
 	#requests.post('http://central-service:5000/post-test', json={"name":"Bob"})
-	country = requests.post('http://central-service:5000/post-test', json={"Country":"Britain"})
-	if country.ok:
-		return country.json()["response"]
+	iban = requests.post('http://central-service:5000/post-test', json={"Country":"Pakistan"})
+	if iban.ok:
+		return iban.json()["IBAN"]
 		#shuaib.json()
 	return "OK\n"
 
+@app.route('/new-iban', methods=['GET', 'POST'])
+def test():
+	#requests.post('http://central-service:5000/post-test', json={"name":"Bob"})
+	iban = requests.post('http://central-service:5000/post-iban', json={"Country":"Pakistan"})
+	if iban.ok:
+		return iban.json()["IBAN"]
+		#shuaib.json()
+	return "OK\n"
