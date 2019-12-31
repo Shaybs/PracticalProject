@@ -4,7 +4,7 @@ import requests
 
 @app.route('/', methods = ['GET', 'POST'])
 def get_test():
-	return {"name":"Bob"}
+	return {"name" : "Bob"}
 
 @app.route('/post-test', methods=['POST'])
 def post_test():
