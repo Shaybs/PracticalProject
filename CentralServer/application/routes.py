@@ -3,24 +3,31 @@ from application import app
 import requests
 
 @app.route('/get-account6', methods=['GET','POST'])
-def test_account():	
+def test_account6():	
 	account = requests.post('http://account-service:5002/post-account-6', json={"Country":"Pakistan"})
 	if account.ok:
 		return account.json()["Account"]
 	return "OK\n"
 
 @app.route('/get-account8', methods=['GET','POST'])
-def test_account1():	
+def test_account8():	
 	account = requests.post('http://account-service:5002/post-account-8', json={"Country":"Pakistan"})
 	if account.ok:
 		return account.json()["Account"]
 	return "OK\n"
 
-@app.route('/test-5001', methods=['GET','POST'])
-def test_country():
-	country = requests.post('http://country-service:5001/post-test', json={"Country":"Belarus"})
-	if country.ok:
-		return country.json()["Country"]
+@app.route('/get-iban4', methods=['GET','POST'])
+def test_iban4():
+	iban = requests.post('http://country-service:5001/post-iban-4', json={"Country":"Belarus"})
+	if iban.ok:
+		return iban.json()["IBAN"]
+	return "OK\n"
+
+@app.route('/get-iban8', methods=['GET','POST'])
+def test_iban8():
+	iban = requests.post('http://country-service:5001/post-iban-8', json={"Country":"Belarus"})
+	if iban.ok:
+		return iban.json()["IBAN"]
 	return "OK\n"
 
 @app.route('/post-test', methods=['POST'])
