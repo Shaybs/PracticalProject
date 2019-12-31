@@ -9,7 +9,10 @@ def get_test():
 
 @app.route('/post-account', methods=['POST'])
 def post_test():
-	account = request.get_json()["Account"]
-	value = random.randint(1,9)
-	value_string = str(value)
-	return {"Account":value_string}
+	country = request.get_json()["Country"]
+	if country == "Belarus":
+		initial = "62"
+		value = random.randint(1,9)
+		value_string = str(value)
+		response_value = initial + value_string
+		return {"Account":response_value}
