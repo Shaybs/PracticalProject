@@ -46,10 +46,8 @@ def test():
 	return "OK\n"
 
 @app.route('/new-iban', methods=['GET', 'POST'])
-def test():
-	#requests.post('http://central-service:5000/post-test', json={"name":"Bob"})
+def iban():
 	iban = requests.post('http://central-service:5000/post-iban', json={"Country":"Pakistan"})
 	if iban.ok:
 		return iban.json()["IBAN"]
-		#shuaib.json()
 	return "OK\n"
