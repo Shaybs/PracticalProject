@@ -8,7 +8,7 @@ def get_test():
 	return {"name" : "Bob"}
 
 @app.route('/post-account-6', methods=['POST'])
-def post_test():
+def post_account6():
 	country = request.get_json()["Country"]
 	if country == "Pakistan":
 		initial = "60"
@@ -144,7 +144,7 @@ def post_test():
 		return {"Account":response_value}
 
 @app.route('/post-account-8', methods=['POST'])
-def post_test():
+def post_account8():
 	country = request.get_json()["Country"]
 	if country == "Pakistan":
 		initial = "60"
