@@ -115,7 +115,7 @@ def post_iban8():
 		value1_string = str(value1)
 		value2 = random.randint(1,9)
 		value2_string = str(value2)
-		random_letters = random.choice(letters, k=4)
+		random_letters = ''.join(random.choice(letters) for i in range(4))
 		response_value = initial + value1_string + value2_string + random_letters
 		return {"IBAN":response_value}
 	elif country == "Belarus":
@@ -124,7 +124,7 @@ def post_iban8():
 		value1_string = str(value1)
 		value2 = random.randint(1,9)
 		value2_string = str(value2)
-		random_letters = random.choice(letters, k=4)
+		random_letters = ''.join(random.choice(letters) for i in range(4))
 		response_value = initial + value1_string + value2_string + random_letters
 		return {"IBAN":response_value}
 	elif country == "United Kingdom":
@@ -133,7 +133,7 @@ def post_iban8():
 		value1_string = str(value1)
 		value2 = random.randint(1,9)
 		value2_string = str(value2)
-		random_letters = random.choice(letters, k=4)
+		random_letters = ''.join(random.choice(letters) for i in range(4))
 		response_value = initial + value1_string + value2_string + random_letters
 		return {"IBAN":response_value}
 	elif country == "United Arab Emirates":
@@ -142,7 +142,7 @@ def post_iban8():
 		value1_string = str(value1)
 		value2 = random.randint(1,9)
 		value2_string = str(value2)
-		random_letters = random.choice(letters, k=4)
+		random_letters = ''.join(random.choice(letters) for i in range(4))
 		response_value = initial + value1_string + value2_string + random_letters
 		return {"IBAN":response_value}
 	elif country == "South Korea":
@@ -151,7 +151,7 @@ def post_iban8():
 		value1_string = str(value1)
 		value2 = random.randint(1,9)
 		value2_string = str(value2)
-		random_letters = random.choice(letters, k=4)
+		random_letters = ''.join(random.choice(letters) for i in range(4))
 		response_value = initial + value1_string + value2_string + random_letters
 		return {"IBAN":response_value}
 	elif country == "Italy":
@@ -160,7 +160,7 @@ def post_iban8():
 		value1_string = str(value1)
 		value2 = random.randint(1,9)
 		value2_string = str(value2)
-		random_letters = random.choice(letters, k=4)
+		random_letters = ''.join(random.choice(letters) for i in range(4))
 		response_value = initial + value1_string + value2_string + random_letters
 		return {"IBAN":response_value}
 	elif country == "China":
@@ -169,7 +169,7 @@ def post_iban8():
 		value1_string = str(value1)
 		value2 = random.randint(1,9)
 		value2_string = str(value2)
-		random_letters = random.choice(letters, k=4)
+		random_letters = ''.join(random.choice(letters) for i in range(4))
 		response_value = initial + value1_string + value2_string + random_letters
 		return {"IBAN":response_value}
 	elif country == "India":
@@ -178,7 +178,7 @@ def post_iban8():
 		value1_string = str(value1)
 		value2 = random.randint(1,9)
 		value2_string = str(value2)
-		random_letters = random.choice(letters, k=4)
+		random_letters = ''.join(random.choice(letters) for i in range(4))
 		response_value = initial + value1_string + value2_string + random_letters
 		return {"IBAN":response_value}
 	elif country == "Singapore":
@@ -187,7 +187,7 @@ def post_iban8():
 		value1_string = str(value1)
 		value2 = random.randint(1,9)
 		value2_string = str(value2)
-		random_letters = random.choice(letters, k=4)
+		random_letters = ''.join(random.choice(letters) for i in range(4))
 		response_value = initial + value1_string + value2_string + random_letters
 		return {"IBAN":response_value}
 	elif country == "Denmark":
@@ -196,7 +196,7 @@ def post_iban8():
 		value1_string = str(value1)
 		value2 = random.randint(1,9)
 		value2_string = str(value2)
-		random_letters = random.choice(letters, k=4)
+		random_letters = ''.join(random.choice(letters) for i in range(4))
 		response_value = initial + value1_string + value2_string + random_letters
 		return {"IBAN":response_value}
 	elif country == "Switzerland":
@@ -205,7 +205,7 @@ def post_iban8():
 		value1_string = str(value1)
 		value2 = random.randint(1,9)
 		value2_string = str(value2)
-		random_letters = random.choice(letters, k=4)
+		random_letters = ''.join(random.choice(letters) for i in range(4))
 		response_value = initial + value1_string + value2_string + random_letters
 		return {"IBAN":response_value}
 
