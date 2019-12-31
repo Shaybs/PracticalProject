@@ -10,7 +10,7 @@ def test_account():
 	return "OK\n"
 
 @app.route('/get-account8', methods=['GET','POST'])
-def test_account():	
+def test_account1():	
 	account = requests.post('http://account-service:5002/post-account-8', json={"Country":"Pakistan"})
 	if account.ok:
 		return account.json()["Account"]
