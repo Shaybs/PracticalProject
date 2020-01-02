@@ -1,6 +1,7 @@
 from flask import Flask, request
 from flask_sqlalchemy import SQLAlchemy
 import requests
+from flask_bcrypt import Bcrypt
 #from application.models import db
 import os
 from flask_bootstrap import Bootstrap
