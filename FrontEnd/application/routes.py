@@ -3,6 +3,7 @@ from application.forms import RegistrationForm
 from application.models import Users
 from application import app
 import requests
+from flask_login import login_user, current_user, logout_user, login_required
 
 #Render the home page
 @app.route('/')
