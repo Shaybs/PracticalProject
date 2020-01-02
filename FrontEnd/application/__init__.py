@@ -3,7 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 import requests
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager
-#from application.models import db
+from application.models import db
 import os
 from flask_bootstrap import Bootstrap
 
