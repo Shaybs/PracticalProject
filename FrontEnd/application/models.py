@@ -1,7 +1,10 @@
-from application import db
+#from application import db
+import flask_sqlalchemy
 from flask_login import UserMixin
 from datetime import datetime
 from wtforms.ext.sqlalchemy.fields import QuerySelectField
+
+db = flask_sqlalchemy.SQLAlchemy()
 
 #Create the Users table
 class Users(db.Model, UserMixin):
