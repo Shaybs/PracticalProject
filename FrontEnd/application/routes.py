@@ -24,7 +24,26 @@ def login():
 #Render the Registration
 @app.route('/register', methods=['GET', 'POST'])
 def register():
+	if current_user.is_authenticated:
+		return redirect(url_for('home'))
+
 	form = RegistrationForm()
+	if form.validate_on_submit():
+		hashed_pw = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
+
+		user = Users(
+			first_name=form.first_name.data,
+			last_name=form.last_name.data,
+			username=form.username.data,
+			email=form.email.data,
+			password=hashed_pw
+		)
+
+		db.session.add(user)
+		db.session.commit()
+		flash('You have successfully registered! You can now login')
+		return redirect(url_for('login'))
+
 	return render_template('register.html', title='Register', form=form)
 
 #Render the test page
