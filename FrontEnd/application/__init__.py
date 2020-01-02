@@ -1,7 +1,7 @@
 from flask import Flask, request
-import requests
-from application.models import db
 from flask_sqlalchemy import SQLAlchemy
+import requests
+#from application.models import db
 import os
 from flask_bootstrap import Bootstrap
 
