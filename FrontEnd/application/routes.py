@@ -38,8 +38,8 @@ def accountgenerator():
 				db.session.commit()
 				return redirect(url_for('accountgenerator'))
 		except:
-            flash('Error: The book already exists')
-        return redirect(url_for('accountgenerator'))
+			flash('Error: The book already exists')
+		return redirect(url_for('accountgenerator'))
 
 	return render_template('accountgenerator.html', title='Account Generator', user=user, form=form)
 
