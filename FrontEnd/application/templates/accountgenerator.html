@@ -22,12 +22,24 @@
 		                  <th width="30%"> IBAN </th>
 		                </tr>
           			</thead>
+          			<tbody>
+          				{% for detail in user %}
+			                <tr>
+			                  	<td> {{ detail.first_name }} {{ detail.last_name}} </td>
+			                  	<td> {{ detail.cardnumber }} </td>
+			                  	<td> {{ detail.accountnumber }} </td>
+			                  	<td> {{ detail.sortcode }} </td>
+			                    <td> {{ detail.cvc }} </td>
+			                  	<td> {{ detail.iban }} </td>
+			                </tr>
+		             	{% endfor %}
+          			</tbody>
 				</table>
           		<div style="text-align: center">
 			        <div style="text-align: center">
-			            <a href="{{ url_for('get_test') }}" class="btn btn-default btn-lg">
+			            <a href="{{ url_for('iban') }}" class="btn btn-default btn-lg">
 	            			<i class="fa fa-plus"></i>
-	            			Test
+	            			Generate Bank Account
 	    				</a>
 	    			</div>
 	    		</div>

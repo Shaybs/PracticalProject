@@ -19,7 +19,10 @@ def about():
 #Render the about page
 @app.route('/accountgenerator')
 def accountgenerator():
-	return render_template('accountgenerator.html', title='Account Generator')
+	#list User's details
+	user = Users.query.get(current_user.id)
+
+	return render_template('accountgenerator.html', title='Account Generator', user=user)
 
 #Render the login page
 @app.route('/login', methods=['GET', 'POST'])
@@ -114,7 +117,6 @@ def test():
 	iban = requests.post('http://central-service:5000/post-test', json={"Country":"Pakistan"})
 	if iban.ok:
 		return iban.json()["IBAN"]
-		#shuaib.json()
 	return "OK\n"
 
 @app.route('/new-iban', methods=['GET', 'POST'])
