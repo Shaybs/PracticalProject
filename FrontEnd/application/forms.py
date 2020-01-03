@@ -105,19 +105,19 @@ class UpdateAccountForm(FlaskForm):
 
         
 class CountryForm(FlaskForm):
-        country = SelectField(
+        country = SelectField('Country',
                 choices=[
-                'Pakistan',
-                'Belarus',
-                'United Kingdom',
-                'United Arab Emirates',
-                'South Korea',
-                'Italy',
-                'China',
-                'India',
-                'Singapore',
-                'Denmark',
-                'Switzerland'
+                ('Pakistan'),
+                ('Belarus'),
+                ('United Kingdom'),
+                ('United Arab Emirates'),
+                ('South Korea'),
+                ('Italy'),
+                ('China'),
+                ('India'),
+                ('Singapore'),
+                ('Denmark'),
+                ('Switzerland')
                 ]
         )
         
