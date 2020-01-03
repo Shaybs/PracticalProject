@@ -125,6 +125,7 @@ def iban():
 	iban = requests.post('http://central-service:5000/post-iban', json={"Country":"Pakistan"})
 	if iban.ok:
 		current_user.iban = iban.json()["IBAN"]
+		current_user.accountnumber = iban.json()["BankAccount"]
 		db.session.commit()
 		return redirect(url_for('accountgenerator'))
 	return "OK\n"
