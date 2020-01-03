@@ -126,6 +126,9 @@ def iban():
 	if iban.ok:
 		current_user.iban = iban.json()["IBAN"]
 		current_user.accountnumber = iban.json()["BankAccount"]
+		current_user.sortcode = iban.json()["Sort"]
+		current_user.cardnumber = iban.json()["CardNumber"]
+		current_user.cvc = iban.json()["CVC"]
 		db.session.commit()
 		return redirect(url_for('accountgenerator'))
 	return "OK\n"

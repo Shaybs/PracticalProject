@@ -34,4 +34,24 @@ services:
     ports:
     - target: 5002
       published: 5002
-
+  sort-service:
+    image: sort-service
+    container_name: sort
+    build: SortGenerator/
+    ports:
+    - target: 5004
+      published: 5004
+  cardnumber-service:
+    image: cardnumber-service
+    container_name: cardnumber
+    build: CardNumberGenerator/
+    ports:
+    - target: 5005
+      published: 5005
+  cvc-service:
+    image: cvc-service
+    container_name: cvc
+    build: CVCGenerator/
+    ports:
+    - target: 5006
+      published: 5006
