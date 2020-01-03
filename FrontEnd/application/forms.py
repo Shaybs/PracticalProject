@@ -6,7 +6,7 @@ from application.models import Users
 from flask_login import current_user
 
 class LoginForm(FlaskForm):
-        email = StringField('Email',
+        username = StringField('Username',
                 validators=[
                         DataRequired(),
                         Email()

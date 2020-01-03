@@ -1,5 +1,5 @@
 from flask import abort, render_template, redirect, url_for, request, flash
-from application.forms import RegistrationForm
+from application.forms import RegistrationForm, LoginForm
 from application.models import Users
 from application import app, db, bcrypt, login_manager
 import requests
@@ -19,7 +19,23 @@ def about():
 #Render the login page
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+	if current_user.is_authenticated:
+		return redirect(url_for('home'))
+
 	form = LoginForm()
+	if form.validate_on_submit():
+		user=Users.query.filter_by(username=form.username.data).first()
+
+		if user and bcrypt.check_password_hash(user.password, form.password.data):
+			login_user(user, remember=form.remember.data)
+			next_page = request.args.get('next')
+
+			if next_page:
+				return redirect(next_page)
+			else:
+				flash('Invalid email or password')
+				return redirect(url_for('home'))
+
 	return render_template('login.html', title='Login', form=form)
 
 #Render the Registration
