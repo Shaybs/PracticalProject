@@ -21,22 +21,25 @@ def about():
 @login_required
 def accountgenerator():
 	
+	#list User's name
+	user = Users.query.get(current_user.id)
+
 	form = CountryForm()
 	if form.validate_on_submit():
 		country = form.country.data
-	try:
-		iban = requests.post('http://central-service:5000/post-iban', json={"Country":country})
-		if iban.ok:
-			current_user.iban = iban.json()["IBAN"]
-			current_user.accountnumber = iban.json()["BankAccount"]
-			current_user.sortcode = iban.json()["Sort"]
-			current_user.cardnumber = iban.json()["CardNumber"]
-			current_user.cvc = iban.json()["CVC"]
-			db.session.commit()
-			return redirect(url_for('accountgenerator'))
-	
-	#list User's name
-	user = Users.query.get(current_user.id)
+		try:
+			iban = requests.post('http://central-service:5000/post-iban', json={"Country":country})
+			if iban.ok:
+				current_user.iban = iban.json()["IBAN"]
+				current_user.accountnumber = iban.json()["BankAccount"]
+				current_user.sortcode = iban.json()["Sort"]
+				current_user.cardnumber = iban.json()["CardNumber"]
+				current_user.cvc = iban.json()["CVC"]
+				db.session.commit()
+				return redirect(url_for('accountgenerator'))
+		except:
+            flash('Error: The book already exists')
+        return redirect(url_for('accountgenerator'))
 
 	return render_template('accountgenerator.html', title='Account Generator', user=user, form=form)
 
