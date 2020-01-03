@@ -68,6 +68,10 @@ def register():
 
 	return render_template('register.html', title='Register', form=form)
 
+@login_manager.user_loader
+def load_user(id):
+	return Users.query.get(int(id))
+
 #Render the test page
 @app.route('/test', methods = ['GET'])
 def get_test():
