@@ -23,7 +23,6 @@
 		                </tr>
           			</thead>
           			<tbody>
-          				{% for detail in user %}
 			                <tr>
 			                  	<td> {{ detail.first_name }} {{ detail.last_name}} </td>
 			                  	<td> {{ detail.cardnumber }} </td>
@@ -32,7 +31,6 @@
 			                    <td> {{ detail.cvc }} </td>
 			                  	<td> {{ detail.iban }} </td>
 			                </tr>
-		             	{% endfor %}
           			</tbody>
 				</table>
           		<div style="text-align: center">
