@@ -6,7 +6,7 @@ pipeline{
                 sudo su - jenkins
                 alias docker-compose="/usr/local/bin/docker-compose"
 				cd PracticalProject
-                git checkout development
+                git checkout development-test
                 git pull'''
 			}
 		}
@@ -15,7 +15,7 @@ pipeline{
                 sudo su - jenkins
                 alias docker-compose="/usr/local/bin/docker-compose"
 				cd PracticalProject
-                git checkout development
+                git checkout development-test
                 docker-compose up -d --build'''
 			}
 		}
