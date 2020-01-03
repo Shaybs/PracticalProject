@@ -78,6 +78,25 @@ def register():
 def load_user(id):
 	return Users.query.get(int(id))
 
+@app.route('/account', methods=['GET', 'POST'])
+@login_required
+def account():
+	form = UpdateAccountForm()
+
+	if form.validate_on_submit():
+		current_user.first_name = form.first_name.data
+		current_user.last_name = form.last_name.data
+		current_user.username = form.username.data
+		current_user.email = form.email.data
+		db.session.commit()
+		return redirect(url_for('account'))
+	elif request.method == 'GET':
+		form.first_name.data = current_user.first_name
+		form.last_name.data = current_user.last_name
+		form.username.data = current_user.username
+
+	return render_template('account.html', title='Account', form=form)
+
 #Render the test page
 @app.route('/test', methods = ['GET'])
 def get_test():
