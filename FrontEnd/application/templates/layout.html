@@ -24,8 +24,7 @@
 						  {% if current_user.is_authenticated %}
 				          <ul class="nav navbar-nav navbar-right">
 	                        	<li><a href="{{ url_for('home') }}">Home</a></li>
-	                        	<li><a href="{{ url_for('books') }}">Books</a></li>
-	                        	<li><a href="{{ url_for('reviews') }}">Bank Account</a></li>
+	                        	<li><a href="{{ url_for('accountgenerator') }}">Bank Account</a></li>
 								<li><a href="{{ url_for('account') }}">Web Account</a></li>
 	                        	<li><a href="{{ url_for('about') }}">About</a></li>
 								<li><a href="{{ url_for('logout') }}">Logout</a></li>
