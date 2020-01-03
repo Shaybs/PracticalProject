@@ -126,5 +126,5 @@ def iban():
 	if iban.ok:
 		current_user.iban = iban.json()["IBAN"]
 		db.session.commit()
-		return redirect(url_for('account'))
+		return redirect(url_for('accountgenerator'))
 	return "OK\n"
