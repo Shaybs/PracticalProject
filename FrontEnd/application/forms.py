@@ -120,6 +120,6 @@ class CountryForm(FlaskForm):
                 ('Switzerland', 'Switzerland')
                 ]
         )
-        submit = SubmitField('Select Country')
+        submit = SubmitField('Generate Bank Account')
 
         
