@@ -22,7 +22,15 @@ def about():
 def accountgenerator():
 
 	form = CountryForm()
-	#list User's details
+    if form.validate_on_submit():
+        country = form.country.data
+        try:
+            flash('You have generated a bank account')
+        except:
+            flash('Error: The review already exists')
+        return redirect(url_for('accountgenerator'))
+	
+	#list User's name
 	user = Users.query.get(current_user.id)
 
 	return render_template('accountgenerator.html', title='Account Generator', user=user, form=form)
