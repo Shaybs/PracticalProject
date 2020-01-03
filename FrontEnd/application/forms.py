@@ -119,7 +119,7 @@ class CountryForm(FlaskForm):
                 ('DK', 'Denmark'),
                 ('SW', 'Switzerland')
                 ]
-
-        submit = SubmitField('Select Country')
         )
+        submit = SubmitField('Select Country')
+
         
