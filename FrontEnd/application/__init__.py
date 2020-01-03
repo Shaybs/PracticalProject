@@ -14,8 +14,5 @@ bootstrap = Bootstrap(app)
 bcrypt = Bcrypt(app)
 login_manager = LoginManager(app)
 login_manager.login_view = 'login'
-app.app_context().push()
-db.init_app(app)
-db.create_all()
 
 from application import routes

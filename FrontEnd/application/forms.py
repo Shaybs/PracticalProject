@@ -9,7 +9,6 @@ class LoginForm(FlaskForm):
         username = StringField('Username',
                 validators=[
                         DataRequired(),
-                        Email()
                 ]
         )
 
