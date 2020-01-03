@@ -16,6 +16,11 @@ def home():
 def about():
 	return render_template('about.html', title='About')
 
+#Render the about page
+@app.route('/accountgenerator')
+def accountgenerator():
+	return render_template('accountgenerator.html', title='Account Generator')
+
 #Render the login page
 @app.route('/login', methods=['GET', 'POST'])
 def login():

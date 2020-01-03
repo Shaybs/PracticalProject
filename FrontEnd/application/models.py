@@ -15,6 +15,7 @@ class Users(db.Model, UserMixin):
     sortcode = db.Column(db.String(16), unique=True)
     cardnumber =  db.Column(db.String(26), unique=True)
     cvc = db.Column(db.String(10), unique=True)
+    iban = db.Column(db.String(50), unique=True)
     
     #What is displayed a part of the object is called
     def __repr__(self):
