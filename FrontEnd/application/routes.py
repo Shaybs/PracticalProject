@@ -27,6 +27,7 @@ def accountgenerator():
 	form = CountryForm()
 	if form.validate_on_submit():
 		country = form.country.data
+		print(country)
 		try:
 			iban = requests.post('http://central-service:5000/post-iban', json={"Country":country})
 			if iban.ok:
