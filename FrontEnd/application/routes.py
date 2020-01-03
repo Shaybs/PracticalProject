@@ -20,14 +20,10 @@ def about():
 @app.route('/accountgenerator')
 @login_required
 def accountgenerator():
+	
 	form = CountryForm()
 	if form.validate_on_submit():
 		country = form.country.data
-        try:
-        	flash('You have generated a bank account')
-        except:
-        	flash('Error: The review already exists')
-        return redirect(url_for('accountgenerator'))
 	
 	#list User's name
 	user = Users.query.get(current_user.id)
