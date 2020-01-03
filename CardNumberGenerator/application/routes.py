@@ -8,5 +8,5 @@ numbers = '0123456789'
 @app.route('/post-cardnumber', methods=['POST'])
 def post_cardnumber():
 	country = request.get_json()["Country"]
-		response_value = ''.join(random.choice(numbers) for i in range(16))
-		return {"CardNumber":response_value}
+	response_value = ''.join(random.choice(numbers) for i in range(16))
+	return {"CardNumber":response_value}
