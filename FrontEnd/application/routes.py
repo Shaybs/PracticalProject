@@ -18,6 +18,7 @@ def about():
 
 #Render the about page
 @app.route('/accountgenerator')
+@login_required
 def accountgenerator():
 	#list User's details
 	user = Users.query.get(current_user.id)
@@ -123,5 +124,5 @@ def test():
 def iban():
 	iban = requests.post('http://central-service:5000/post-iban', json={"Country":"Pakistan"})
 	if iban.ok:
-		return iban.json()["IBAN"]
+		current_user.iban = iban.json()["IBAN"]
 	return "OK\n"
