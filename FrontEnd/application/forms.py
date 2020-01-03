@@ -104,6 +104,20 @@ class UpdateAccountForm(FlaskForm):
                                 raise ValidationError('Email already in use - Please choose another')
 
         
-
-
+class CountryForm(FlaskForm):
+        country = SelectField('Country',
+                choices=[
+                'Pakistan',
+                'Belarus',
+                'United Kingdom',
+                'United Arab Emirates',
+                'South Korea',
+                'Italy',
+                'China',
+                'India',
+                'Singapore',
+                'Denmark',
+                'Switzerland'
+                ]
+        )
         

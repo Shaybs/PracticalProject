@@ -1,5 +1,5 @@
 from flask import abort, render_template, redirect, url_for, request, flash
-from application.forms import RegistrationForm, LoginForm, UpdateAccountForm
+from application.forms import RegistrationForm, LoginForm, UpdateAccountForm, CountryForm
 from application.models import Users
 from application import app, db, bcrypt, login_manager
 import requests
@@ -20,10 +20,12 @@ def about():
 @app.route('/accountgenerator')
 @login_required
 def accountgenerator():
+
+	form = CountryForm()
 	#list User's details
 	user = Users.query.get(current_user.id)
 
-	return render_template('accountgenerator.html', title='Account Generator', user=user)
+	return render_template('accountgenerator.html', title='Account Generator', user=user, form=form)
 
 #Render the login page
 @app.route('/login', methods=['GET', 'POST'])
@@ -100,25 +102,6 @@ def account():
 		form.username.data = current_user.username
 
 	return render_template('account.html', title='Account', form=form)
-
-#Render the test page
-@app.route('/test', methods = ['GET'])
-def get_test():
-	return {"name":"Bob"}
-
-#Render the post-test page
-@app.route('/post-test', methods=['POST'])
-def post_test():
-	print(request.json)
-	return "OK\n"
-
-@app.route('/new-test', methods=['GET', 'POST'])
-def test():
-	#requests.post('http://central-service:5000/post-test', json={"name":"Bob"})
-	iban = requests.post('http://central-service:5000/post-test', json={"Country":"Pakistan"})
-	if iban.ok:
-		return iban.json()["IBAN"]
-	return "OK\n"
 
 @app.route('/new-iban', methods=['GET', 'POST'])
 def iban():
