@@ -17,7 +17,7 @@ def about():
 	return render_template('about.html', title='About')
 
 #Render the about page
-@app.route('/accountgenerator')
+@app.route('/accountgenerator', methods=['GET', 'POST'])
 @login_required
 def accountgenerator():
 	
