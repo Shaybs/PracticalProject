@@ -9,6 +9,7 @@ services:
     - PASSWORD=${PASSWORD}
     - MYSQL_URL=${MYSQL_URL}
     - MYSQL_DB=${MYSQL_DB}
+    - MYSQL_DB_TEST=${MYSQL_DB_TEST}
     - SECRET_KEY=${SECRET_KEY}
 
   central-service:
