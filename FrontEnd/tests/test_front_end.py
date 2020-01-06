@@ -136,7 +136,7 @@ class ModelTests(TestBase):
 	
 	#Test whether a new list can be added and the count of the table to verify the addition
 	def test_users_model(self):
-		piers = Users(first_name="piers", last_name="gilbert", email="piers@email.com", password="unknown")
+		piers = Users(first_name="piers", last_name="gilbert", username="gilbert", email="piers@email.com", password="unknown")
 		db.session.add(piers)
 		db.session.commit()
 		self.assertEqual(Users.query.count(), 3)
@@ -167,7 +167,7 @@ class TestLogin(TestBase):
 	def test_register(self):
 		response = self.client.post(
 			url_for('login'),
-			data=dict(first_name="test", last_name="anothername", email="newadmin@admin.com", password="unknown"),
+			data=dict(first_name="test", last_name="anothername", username="gilbert", email="newadmin@admin.com", password="unknown"),
 			follow_redirects=True
 		)
 		self.assertIn(b'', response.data)
