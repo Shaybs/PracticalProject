@@ -11,25 +11,6 @@ services:
     - MYSQL_DB=${MYSQL_DB}
     - SECRET_KEY=${SECRET_KEY}
 
-  nginx:
-    image: nginx:latest
-    container_name: nginx
-    ports:
-    - target: 80
-      published: 80
-    volumes:
-    - type: bind
-      source: ./nginx/nginx.conf
-      target: /etc/nginx/nginx.conf
-    depends_on:
-      - frontend-service
-        central-service
-        country-service
-        account-service
-        sort-service
-        cardnumber-service
-        cvc-service
-
   central-service:
     image: central-service
     container_name: central
@@ -59,3 +40,22 @@ services:
     image: cvc-service
     container_name: cvc
     build: CVCGenerator/
+
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    ports:
+    - target: 80
+      published: 80
+    volumes:
+    - type: bind
+      source: ./nginx/nginx.conf
+      target: /etc/nginx/nginx.conf
+    depends_on:
+      - frontend-service
+        central-service
+        country-service
+        account-service
+        sort-service
+        cardnumber-service
+        cvc-service
