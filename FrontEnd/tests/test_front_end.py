@@ -27,9 +27,8 @@ class TestBase(TestCase):
 		db.create_all()
 
 		#Create test admin user
-		admin = Users(first_name="admin", last_name="admin", email="admin@admin.com", password="admin")
-		employee = Users(first_name="test", last_name="user", email="test@user.com", password="test2016")
-
+		admin = Users(first_name="admin", last_name="admin", username="admin", email="admin@admin.com", password="admin")
+		employee = Users(first_name="test", last_name="user", username="employee", email="test@user.com", password="test2016")
 
 		#Save/Add users to the databse
 		db.session.add(admin)
