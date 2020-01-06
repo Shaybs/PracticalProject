@@ -53,9 +53,3 @@ services:
       target: /etc/nginx/nginx.conf
     depends_on:
       - frontend-service
-        central-service
-        country-service
-        account-service
-        sort-service
-        cardnumber-service
-        cvc-service
