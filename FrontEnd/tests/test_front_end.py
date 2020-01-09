@@ -177,10 +177,6 @@ class TestLogin(TestBase):
 	def test_logout(self):
 		return self.client.get(url_for('logout'), follow_redirects=True)
 
-class MyGreatClass:
-	def fetch_json(self, url):
-		response = requests.get(url)
-		return response.json()
 
 def mocked_requests_get(*args, **kwargs):
 	class MockResponse:
@@ -192,22 +188,21 @@ def mocked_requests_get(*args, **kwargs):
 			return self.json_data
 
 	if arg[0] == 'http://central-service:5000/post-iban-PK':
-		return MockResponse({"IBAN":"PK78NVYV605291235VEY9REJVH6K"})
+		return MockResponse({"IBAN":"PK78NVYV605291235VEY9REJVH6K"}, 200)
 	elif arg[0] == 'http://central-service:5000/post-iban-IT':
-		return MockResponse({"IBAN":"IT78CCQE6585255894U347013A950"})
+		return MockResponse({"IBAN":"IT78CCQE6585255894U347013A950"}, 200)
 	elif arg[0] == 'http://central-service:5000/post-iban-DK':
-		return MockResponse({"IBAN":"DK22FSFT683592381GDZ3RUI53M93A"})
+		return MockResponse({"IBAN":"DK22FSFT683592381GDZ3RUI53M93A"}, 200)
 
 	class ResponseTestClass(TestCase):
 		@mock.patch('requests.get', side_effect=mocked_requests_get)
-		def test_fect(self, mock_get):
+		def test_fetch(self, mock_get):
 			#Assert requests.get calls
-			mgc = MyGreatClass()
-			ibanPK = mgc.fetch_json('http://central-service:5000/post-iban-PK')
+			ibanPK = requests.get('http://central-service:5000/post-iban-PK').json()
 			self.assertEqual(ibanPK, {"IBAN":"PK78NVYV605291235VEY9REJVH6K"})
-			ibanIT = mgc.fetch_json('http://central-service:5000/post-iban-IT')
+			ibanIT = requests.get('http://central-service:5000/post-iban-IT').json()
 			self.assertEqual(ibanIT, {"IBAN":"IT78CCQE6585255894U347013A950"})
-			ibanDK = mgc.fetch_json('http://central-service:5000/post-iban-DK')
+			ibanDK = requests.get('http://central-service:5000/post-iban-DK').json()
 			self.assertIsNone(ibanDK, {"IBAN":"DK22FSFT683592381GDZ3RUI53M93A"})
 
 if __name__ == '__main__':
