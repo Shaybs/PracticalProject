@@ -3,3 +3,6 @@
 /ignorefile
 /venv/*
 /__pycache__/*
+/playbook.yaml
+/jenkins_id_rsa
+/jenkins_id_rsa.pub
