@@ -111,26 +111,26 @@ class TestViews(TestBase):
 		response = self.client.get(url_for('logout'))
 		self.assertEqual(response.status_code, 302)
 
-#class TestFrontEnd(TestBase):
- #   #Test the string response of the Home page
-#	def test_home_route_works_as_expected(self):
-#		response = self.client.get(url_for('home'))
-#		self.assertIn(b"Home Page", response.data)
-#
-#	#Test the string response of the About page
-#	def test_about_route_works_as_expected(self):
-#		response = self.client.get(url_for('about'))
-#		self.assertIn(b"About", response.data)
-#
-#	#Test the string response for the register
-#	def test_register_route_works_as_expected(self):
-#		response = self.client.get(url_for('register'))
-#		self.assertIn(b"Register for an account", response.data)
-#
-#	#Test the string response for the login
-#	def test_login_route_works_as_expected(self):
-#		response = self.client.get(url_for('login'))
-#		self.assertIn(b"Login", response.data)
+class TestFrontEnd(TestBase):
+    #Test the string response of the Home page
+	def test_home_route_works_as_expected(self):
+		response = self.client.get(url_for('home'))
+		self.assertIn(b"Home Page", response.data)
+
+	#Test the string response of the About page
+	def test_about_route_works_as_expected(self):
+		response = self.client.get(url_for('about'))
+		self.assertIn(b"About", response.data)
+
+	#Test the string response for the register
+	def test_register_route_works_as_expected(self):
+		response = self.client.get(url_for('register'))
+		self.assertIn(b"Register for an account", response.data)
+
+	#Test the string response for the login
+	def test_login_route_works_as_expected(self):
+		response = self.client.get(url_for('login'))
+		self.assertIn(b"Login", response.data)
 
 class ModelTests(TestBase):
 	
@@ -178,21 +178,62 @@ class TestLogin(TestBase):
 		return self.client.get(url_for('logout'), follow_redirects=True)
 
 
+
 def mocked_requests_get(*args, **kwargs):
-	class MockResponse:
-		def __init__(self,json_data, status_code):
-			self.json_data = json_data
-			self.status_code = status_code
+    class MockResponse:
+        def __init__(self, json_data, status_code):
+            self.json_data = json_data
+            self.status_code = status_code 
 
-		def json(self):
-			return self.json_data
+        def json(self):
+            return self.json_data
 
-	if arg[0] == 'http://central-service:5000/post-iban-PK':
-		return MockResponse({"IBAN":"PK78NVYV605291235VEY9REJVH6K"}, 200)
-	elif arg[0] == 'http://central-service:5000/post-iban-IT':
-		return MockResponse({"IBAN":"IT78CCQE6585255894U347013A950"}, 200)
-	elif arg[0] == 'http://central-service:5000/post-iban-DK':
-		return MockResponse({"IBAN":"DK22FSFT683592381GDZ3RUI53M93A"}, 200)
+    if args[0] == 'http://countries:5000/':
+    	countries_json = {
+    	"options": [
+    	{
+    	"code": "ZA",
+    	"name": "South Africa"
+    	},
+    	{
+    	"code": "TG",
+    	"name": "Togo"
+    	},
+    	{
+    	"code": "YE",
+    	"name": "Yemen"
+    	},
+    	{
+    	"code": "NL",
+    	"name": "Netherlands"
+    	}
+    	],
+    	"image": "YE"
+    	}
+
+    	return MockResponse(countries_json, 200)
+    elif args[0] == 'http://temperature:5000/':
+    	return MockResponse({"temperature": "5.2"}, 200)
+
+    return MockResponse(None, 404)
+
+#def mocked_requests_get(*args, **kwargs):
+#	class MockResponse:
+#		def __init__(self,json_data, status_code):
+#			self.json_data = json_data
+#			self.status_code = status_code
+
+#		def json(self):
+#			return self.json_data
+
+#	if arg[0] == 'http://central-service:5000/post-iban-PK':
+#		return MockResponse({"IBAN":"PK78NVYV605291235VEY9REJVH6K"}, 200)
+#	elif arg[0] == 'http://central-service:5000/post-iban-IT':
+#		return MockResponse({"IBAN":"IT78CCQE6585255894U347013A950"}, 200)
+#	elif arg[0] == 'http://central-service:5000/post-iban-DK':
+#		return MockResponse({"IBAN":"DK22FSFT683592381GDZ3RUI53M93A"}, 200)
+#
+#	return MockResponse(None, 404)
 
 class ResponseTestClass(TestCase):
 	@mock.patch('requests.get', side_effect=mocked_requests_get)
@@ -207,7 +248,7 @@ class ResponseTestClass(TestCase):
 	@mock.patch('requests.get', side_effect=mocked_requests_get)
 	def test_DK(self, mock_get):
 		ibanDK = requests.get('http://central-service:5000/post-iban-DK').json()
-		self.assertIsNone(ibanDK, {"IBAN":"DK22FSFT683592381GDZ3RUI53M93A"})
+		self.assertEqual(ibanDK, {"IBAN":"DK22FSFT683592381GDZ3RUI53M93A"})
 
 if __name__ == '__main__':
 	unittest.main()
