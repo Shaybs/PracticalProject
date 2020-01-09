@@ -111,26 +111,26 @@ class TestViews(TestBase):
 		response = self.client.get(url_for('logout'))
 		self.assertEqual(response.status_code, 302)
 
-class TestFrontEnd(TestBase):
-    #Test the string response of the Home page
-	def test_home_route_works_as_expected(self):
-		response = self.client.get(url_for('home'))
-		self.assertIn(b"Home Page", response.data)
-
-	#Test the string response of the About page
-	def test_about_route_works_as_expected(self):
-		response = self.client.get(url_for('about'))
-		self.assertIn(b"About", response.data)
-
-	#Test the string response for the register
-	def test_register_route_works_as_expected(self):
-		response = self.client.get(url_for('register'))
-		self.assertIn(b"Register for an account", response.data)
-
-	#Test the string response for the login
-	def test_login_route_works_as_expected(self):
-		response = self.client.get(url_for('login'))
-		self.assertIn(b"Login", response.data)
+#class TestFrontEnd(TestBase):
+ #   #Test the string response of the Home page
+#	def test_home_route_works_as_expected(self):
+#		response = self.client.get(url_for('home'))
+#		self.assertIn(b"Home Page", response.data)
+#
+#	#Test the string response of the About page
+#	def test_about_route_works_as_expected(self):
+#		response = self.client.get(url_for('about'))
+#		self.assertIn(b"About", response.data)
+#
+#	#Test the string response for the register
+#	def test_register_route_works_as_expected(self):
+#		response = self.client.get(url_for('register'))
+#		self.assertIn(b"Register for an account", response.data)
+#
+#	#Test the string response for the login
+#	def test_login_route_works_as_expected(self):
+#		response = self.client.get(url_for('login'))
+#		self.assertIn(b"Login", response.data)
 
 class ModelTests(TestBase):
 	
