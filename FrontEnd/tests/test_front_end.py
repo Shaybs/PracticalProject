@@ -1,12 +1,12 @@
 import unittest
-
+import requests
+from unittest import mock
 from flask import abort, url_for
 from flask_testing import TestCase
 import os
 from application import app, db
 from application.models import Users
 from flask_login import login_user, current_user, logout_user, login_required
-
 
 class TestBase(TestCase):
 
@@ -176,6 +176,39 @@ class TestLogin(TestBase):
 	# Test whether logout works
 	def test_logout(self):
 		return self.client.get(url_for('logout'), follow_redirects=True)
+
+class MyGreatClass:
+	def fetch_json(self, url):
+		response = requests.get(url)
+		return response.json()
+
+def mocked_requests_get(*args, **kwargs):
+	class MockResponse:
+		def __init__(self,json_data, status_code):
+			self.json_data = json_data
+			self.status_code = status_code
+
+		def json(self):
+			return self.json_data
+
+	if arg[0] == 'http://central-service:5000/post-iban-PK':
+		return MockResponse({"IBAN":"PK78NVYV605291235VEY9REJVH6K"})
+	elif arg[0] == 'http://central-service:5000/post-iban-IT':
+		return MockResponse({"IBAN":"IT78CCQE6585255894U347013A950"})
+	elif arg[0] == 'http://central-service:5000/post-iban-DK':
+		return MockResponse({"IBAN":"DK22FSFT683592381GDZ3RUI53M93A"})
+
+class ResponseTestClass(TestCase):
+	@mock.patch('requests.get', side_effect=mocked_requests_get)
+	def test_fect(self, mock_get):
+		#Assert requests.get calls
+		mgc = MyGreatClass()
+		ibanPK = mgc.fetch_json('http://central-service:5000/post-iban-PK')
+        self.assertEqual(ibanPK, {"IBAN":"PK78NVYV605291235VEY9REJVH6K"})
+        ibanIT = mgc.fetch_json('http://central-service:5000/post-iban-IT')
+        self.assertEqual(ibanIT, {"IBAN":"IT78CCQE6585255894U347013A950"})
+        ibanDK = mgc.fetch_json('http://central-service:5000/post-iban-DK')
+        self.assertIsNone(ibanDK, {"IBAN":"DK22FSFT683592381GDZ3RUI53M93A"})
 
 if __name__ == '__main__':
 	unittest.main()

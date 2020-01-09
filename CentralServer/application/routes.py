@@ -81,14 +81,7 @@ def post_iban():
 		iban_numbers_in_string = ''.join(random.choice(numbersletters) for i in range(14))
 		iban = iban_preamble + iban_account + iban_numbers_in_string
 
-	#iban_numbers_in_string = ''.join(random.choice(numbersletters) for i in range(12))
-	#iban = iban_preamble + iban_account + iban_numbers_in_string
 	return {"IBAN":iban, "BankAccount":iban_account, "Sort":sort, "CardNumber":cardnumber, "CVC":cvc}
-
-@app.route('/post-test', methods=['POST'])
-def post_test():
-	country = request.get_json()["Country"]
-	return {"response":country}
 
 
 
