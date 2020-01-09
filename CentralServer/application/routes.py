@@ -63,22 +63,22 @@ def post_iban():
 		iban_numbers_in_string = ''.join(random.choice(numbersletters) for i in range(12))
 		iban = iban_preamble + iban_account + iban_numbers_in_string
 	elif iban_preamble[0] == 'I' and iban_preamble[1] == 'T':
-		iban_numbers_in_string = ''.join(random.choice(numbersletters) for i in range(12))
+		iban_numbers_in_string = ''.join(random.choice(numbersletters) for i in range(13))
 		iban = iban_preamble + iban_account + iban_numbers_in_string
 	elif iban_preamble[0] == 'C' and iban_preamble[1] == 'H':
-		iban_numbers_in_string = ''.join(random.choice(numbersletters) for i in range(12))
+		iban_numbers_in_string = ''.join(random.choice(numbersletters) for i in range(14))
 		iban = iban_preamble + iban_account + iban_numbers_in_string
 	elif iban_preamble[0] == 'I' and iban_preamble[1] == 'N':
-		iban_numbers_in_string = ''.join(random.choice(numbersletters) for i in range(12))
+		iban_numbers_in_string = ''.join(random.choice(numbersletters) for i in range(14))
 		iban = iban_preamble + iban_account + iban_numbers_in_string
 	elif iban_preamble[0] == 'S' and iban_preamble[1] == 'N':
-		iban_numbers_in_string = ''.join(random.choice(numbersletters) for i in range(12))
+		iban_numbers_in_string = ''.join(random.choice(numbersletters) for i in range(14))
 		iban = iban_preamble + iban_account + iban_numbers_in_string
 	elif iban_preamble[0] == 'D' and iban_preamble[1] == 'K':
-		iban_numbers_in_string = ''.join(random.choice(numbersletters) for i in range(12))
+		iban_numbers_in_string = ''.join(random.choice(numbersletters) for i in range(14))
 		iban = iban_preamble + iban_account + iban_numbers_in_string
 	elif iban_preamble[0] == 'S' and iban_preamble[1] == 'W':
-		iban_numbers_in_string = ''.join(random.choice(numbersletters) for i in range(12))
+		iban_numbers_in_string = ''.join(random.choice(numbersletters) for i in range(14))
 		iban = iban_preamble + iban_account + iban_numbers_in_string
 
 	iban_numbers_in_string = ''.join(random.choice(numbersletters) for i in range(12))
