@@ -36,9 +36,10 @@ def accountgenerator():
 				current_user.cardnumber = iban.json()["CardNumber"]
 				current_user.cvc = iban.json()["CVC"]
 				db.session.commit()
+				flash('You have successfully generated a bank account!')
 				return redirect(url_for('accountgenerator'))
 		except:
-			flash('Error: The book already exists')
+			flash('Error')
 		return redirect(url_for('accountgenerator'))
 
 	return render_template('accountgenerator.html', title='Account Generator', user=user, form=form)
@@ -60,7 +61,6 @@ def login():
 			if next_page:
 				return redirect(next_page)
 			else:
-				flash('Invalid email or password')
 				return redirect(url_for('home'))
 
 	return render_template('login.html', title='Login', form=form)
@@ -111,6 +111,7 @@ def account():
 		current_user.username = form.username.data
 		current_user.email = form.email.data
 		db.session.commit()
+		flash('You have successfully updated your details!')
 		return redirect(url_for('account'))
 	elif request.method == 'GET':
 		form.first_name.data = current_user.first_name

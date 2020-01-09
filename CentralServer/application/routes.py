@@ -3,7 +3,7 @@ from application import app
 import requests
 import random
 
-numbers = '0123456789'
+numbersletters = '0A1B2C3D4E5F6G7H8I9J0K1L2M3N4O5P6Q7R8S9T0U1V2W3X4Y5Z'
 
 @app.route('/get-account6', methods=['GET','POST'])
 def test_account6():	
@@ -46,7 +46,42 @@ def post_iban():
 	iban_account = account.json()["Account"]
 	iban_preambleservice = requests.post('http://country-service:5001/post-iban-8', json={"Country":country})
 	iban_preamble = iban_preambleservice.json()["IBAN"]
-	iban_numbers_in_string = ''.join(random.choice(numbers) for i in range(12))
+
+	if iban_preamble[0] == 'P' and iban_preamble[1] == 'K':
+		iban_numbers_in_string = ''.join(random.choice(numbersletters) for i in range(12))
+		iban = iban_preamble + iban_account + iban_numbers_in_string
+	elif iban_preamble[0] == 'B' and iban_preamble[1] == 'L':
+		iban_numbers_in_string = ''.join(random.choice(numbersletters) for i in range(12))
+		iban = iban_preamble + iban_account + iban_numbers_in_string
+	elif iban_preamble[0] == 'U' and iban_preamble[1] == 'K':
+		iban_numbers_in_string = ''.join(random.choice(numbersletters) for i in range(12))
+		iban = iban_preamble + iban_account + iban_numbers_in_string
+	elif iban_preamble[0] == 'U' and iban_preamble[1] == 'E':
+		iban_numbers_in_string = ''.join(random.choice(numbersletters) for i in range(12))
+		iban = iban_preamble + iban_account + iban_numbers_in_string
+	elif iban_preamble[0] == 'S' and iban_preamble[1] == 'K':
+		iban_numbers_in_string = ''.join(random.choice(numbersletters) for i in range(12))
+		iban = iban_preamble + iban_account + iban_numbers_in_string
+	elif iban_preamble[0] == 'I' and iban_preamble[1] == 'T':
+		iban_numbers_in_string = ''.join(random.choice(numbersletters) for i in range(12))
+		iban = iban_preamble + iban_account + iban_numbers_in_string
+	elif iban_preamble[0] == 'C' and iban_preamble[1] == 'H':
+		iban_numbers_in_string = ''.join(random.choice(numbersletters) for i in range(12))
+		iban = iban_preamble + iban_account + iban_numbers_in_string
+	elif iban_preamble[0] == 'I' and iban_preamble[1] == 'N':
+		iban_numbers_in_string = ''.join(random.choice(numbersletters) for i in range(12))
+		iban = iban_preamble + iban_account + iban_numbers_in_string
+	elif iban_preamble[0] == 'S' and iban_preamble[1] == 'N':
+		iban_numbers_in_string = ''.join(random.choice(numbersletters) for i in range(12))
+		iban = iban_preamble + iban_account + iban_numbers_in_string
+	elif iban_preamble[0] == 'D' and iban_preamble[1] == 'K':
+		iban_numbers_in_string = ''.join(random.choice(numbersletters) for i in range(12))
+		iban = iban_preamble + iban_account + iban_numbers_in_string
+	elif iban_preamble[0] == 'S' and iban_preamble[1] == 'W':
+		iban_numbers_in_string = ''.join(random.choice(numbersletters) for i in range(12))
+		iban = iban_preamble + iban_account + iban_numbers_in_string
+
+	iban_numbers_in_string = ''.join(random.choice(numbersletters) for i in range(12))
 	iban = iban_preamble + iban_account + iban_numbers_in_string
 	return {"IBAN":iban, "BankAccount":iban_account, "Sort":sort, "CardNumber":cardnumber, "CVC":cvc}
 

@@ -81,7 +81,7 @@ def post_iban4():
 		response_value = initial + value1_string + value2_string
 		return {"IBAN":response_value}
 	elif country == "Denmark":
-		initial = "DN"
+		initial = "DK"
 		value1 = random.randint(1,9)
 		value1_string = str(value1)
 		value2 = random.randint(1,9)
@@ -182,7 +182,7 @@ def post_iban8():
 		response_value = initial + value1_string + value2_string + random_letters
 		return {"IBAN":response_value}
 	elif country == "Denmark":
-		initial = "DN"
+		initial = "DK"
 		value1 = random.randint(1,9)
 		value1_string = str(value1)
 		value2 = random.randint(1,9)
