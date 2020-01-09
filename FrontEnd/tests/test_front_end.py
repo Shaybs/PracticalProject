@@ -239,8 +239,8 @@ class ResponseTestClass(unittest.TestCase):
 	@mock.patch('requests.get', side_effect=mocked_requests_get)
 	def test_PK(self, mock_get):
 		#Assert requests.get calls
-		ibanPK = requests.get('http://central-service:5000/post-iban-PK').json()
-		self.assertEqual(ibanPK, {"IBAN":"PK78NVYV605291235VEY9REJVH6K"})
+		ibanPK = requests.get('http://temperature:5000/').json()
+		self.assertEqual(ibanPK, {"temperature": "5.2"})
 	@mock.patch('requests.get', side_effect=mocked_requests_get)
 	def test_IT(self, mock_get):
 		ibanIT = requests.get('http://central-service:5000/post-iban-IT').json()
