@@ -235,7 +235,7 @@ def mocked_requests_get(*args, **kwargs):
 #
 #	return MockResponse(None, 404)
 
-class ResponseTestClass(TestCase):
+class ResponseTestClass(unittest.TestCase):
 	@mock.patch('requests.get', side_effect=mocked_requests_get)
 	def test_PK(self, mock_get):
 		#Assert requests.get calls
