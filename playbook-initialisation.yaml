@@ -178,11 +178,3 @@
       repo: 'https://github.com/Shaybs/PracticalProject.git'
       dest: /home/jenkins/PracticalProject
       version: development-test
-  - name: Deploy stack from a compose file
-    docker_stack:
-      state: present
-      name: stack
-      compose:
-        - /home/jenkins/PracticalProject/docker-compose.yaml
-      environment:
-        BUILD_NUMBER: 0

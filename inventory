@@ -3,7 +3,7 @@
 35.189.235.240
 
 [swarm]
-35.230.152.118
+34.77.225.138 
 
 [swarm:vars]
 ansible_user=qa-admin
