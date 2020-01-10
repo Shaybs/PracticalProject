@@ -183,4 +183,6 @@
       state: present
       name: stack
       compose:
-        - /home/jenkins/PracticalProject/docker-compose-initialise.yaml
+        - /home/jenkins/PracticalProject/docker-compose.yaml
+      environment:
+        BUILD_NUMBER: 0
