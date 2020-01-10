@@ -1,4 +1,8 @@
 pipeline{
+	environment
+	{
+		build_number = "${env.BUILD_NUMBER}"
+	}
 	agent any
 	stages{
 		stage("Update git repository") {
@@ -16,7 +20,10 @@ pipeline{
                 alias docker-compose="/usr/local/bin/docker-compose"
 				cd PracticalProject
                 git checkout development-test
-                docker-compose up -d --build'''
+
+                export BUILD_NUMBER='${build_number}'
+                docker-compose build
+                '''
 			}
 		}
 	}

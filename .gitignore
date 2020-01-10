@@ -6,3 +6,4 @@
 /playbook.yaml
 /jenkins_id_rsa
 /jenkins_id_rsa.pub
+/playbook-swarm.yaml
