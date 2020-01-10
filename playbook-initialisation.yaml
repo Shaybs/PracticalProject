@@ -155,16 +155,6 @@
       repo: 'https://github.com/Shaybs/PracticalProject.git'
       dest: /home/jenkins/PracticalProject
       version: development-test
-  - name: build images
-    docker_compose:
-      project_src: /home/jenkins/PracticalProject
-      build: yes
-    remote_user: jenkins
-  - name: push images
-    shell: 
-      chdir: /home/jenkins/PracticalProject
-      cmd: "docker-compose push"
-    remote_user: jenkins
 
 - hosts: swarm
   become: true
@@ -188,50 +178,9 @@
       repo: 'https://github.com/Shaybs/PracticalProject.git'
       dest: /home/jenkins/PracticalProject
       version: development-test
-  - name: build images
-    docker_compose:
-      project_src: /home/jenkins/PracticalProject
-      build: yes
-    remote_user: jenkins
-  - name: push images
-    shell: 
-      cmd: "cd /home/jenkins/PracticalProject"
-      cmd: "docker-compose push"
   - name: Deploy stack from a compose file
     docker_stack:
       state: present
       name: stack
       compose:
         - /home/jenkins/PracticalProject/docker-compose.yaml
-  - name: Update stack account service
-    docker_swarm_service:
-      name: stack_account-service 
-      image: ansible-jenkins:5000/account-service:latest
-  - name: Update stack cardnumber service
-    docker_swarm_service:
-      name: stack_cardnumber-service
-      image: ansible-jenkins:5000/cardnumber-service:latest
-  - name: Update stack central service
-    docker_swarm_service:
-      name: stack_central-service
-      image: ansible-jenkins:5000/central-service:latest
-  - name: Update stack country service
-    docker_swarm_service:
-      name: stack_country-service
-      image: ansible-jenkins:5000/country-service:latest
-  - name: Update stack cvc service
-    docker_swarm_service:
-      name: stack_cvc-service
-      image: ansible-jenkins:5000/cvc-service:latest
-  - name: Update stack frontend service
-    docker_swarm_service:
-      name: stack_frontend-service
-      image: ansible-jenkins:5000/frontend:latest
-  - name: Update stack sort service
-    docker_swarm_service:
-      name: stack_sort-service
-      image: ansible-jenkins:5000/sort-service:latest
-  - name: Update stack nginx service
-    docker_swarm_service:
-      name: stack_nginx 
-      image: nginx:latest
