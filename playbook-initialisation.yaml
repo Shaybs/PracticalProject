@@ -159,7 +159,7 @@
     docker_swarm:
       state: present
     remote_user: jenkins
-  # git clone to somewhere appropriate
+  #git clone to somewhere appropriate
   #path: /home/jenkins
   #git repo: https://github.com/Shaybs/PracticalProject.git
   - git:

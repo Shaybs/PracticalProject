@@ -59,6 +59,8 @@ services:
 
   nginx:
     image: nginx:latest
+    deploy:
+      replicas: 3
     container_name: nginx
     ports:
     - target: 80
