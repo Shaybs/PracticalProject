@@ -183,4 +183,4 @@
       state: present
       name: stack
       compose:
-        - /home/jenkins/PracticalProject/docker-compose.yaml
+        - /home/jenkins/PracticalProject/docker-compose-initialise.yaml

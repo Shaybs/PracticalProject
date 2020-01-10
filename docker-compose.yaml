@@ -2,7 +2,7 @@ version: "3.7"
 services:
   frontend-service:
   # image: jenkins-ansible:5000/frontend:${BUILD_NUMBER}
-    image: ansible-jenkins:5000/frontend
+    image: ansible-jenkins:5000/frontend:${BUILD_NUMBER}
     deploy:
       replicas: 2
     container_name: frontend
