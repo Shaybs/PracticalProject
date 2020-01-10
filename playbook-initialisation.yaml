@@ -153,6 +153,8 @@
       name: docker
   - pip:
       name: docker-compose
+  - pip:
+      name: jsondiff
   - name: initialise swarm
     docker_swarm:
       state: present
@@ -163,20 +165,17 @@
   - git:
       repo: 'https://github.com/Shaybs/PracticalProject.git'
       dest: /home/jenkins/PracticalProject
+      version: development-test
   # docker-compose build & push to registry (build as initial)
   - name: build images
     docker_compose:
-      project_src: /home/jenkins
+      project_src: /home/jenkins/PracticalProject
       build: yes
     remote_user: jenkins
   # use docker stack \/
   - name: Deploy stack from a compose file
     docker_stack:
       state: present
-      name: mystack
+      name: stack
       compose:
-        - /home/jenkins/PracticalProject/docker-compose.yml
-  - name: deploy application
-    docker_stack:
-      state: present
-      name: 
+        - /home/jenkins/PracticalProject/docker-compose.yaml
