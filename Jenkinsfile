@@ -1,28 +1,38 @@
 pipeline{
+    agent any
 	environment
 	{
-		build_number = "${env.BUILD_NUMBER}"
+		build = "${env.BUILD_NUMBER}"
 	}
-	agent any
 	stages{
 		stage("Update git repository") {
-			steps{sh '''ssh 35.204.238.159 << EOF
+			steps{sh '''
                 sudo su - jenkins
-                alias docker-compose="/usr/local/bin/docker-compose"
-				cd PracticalProject
+                cd PracticalProject
                 git checkout development-test
-                git pull'''
+                git pull
+                echo "${build}"
+                '''
+			}
+		}
+		stage("Build") {
+			steps{sh '''
+                sudo su - jenkins
+                cd PracticalProject
+                export BUILD_NUMBER="${build}"
+                docker-compose build
+                docker-compose push
+                '''
 			}
 		}
 		stage("Deploy") {
-			steps{sh '''ssh 35.204.238.159 << EOF
+			steps{sh '''ssh ansible-app << EOF
                 sudo su - jenkins
-                alias docker-compose="/usr/local/bin/docker-compose"
-				cd PracticalProject
-                git checkout development-test
-
-                export BUILD_NUMBER='${build_number}'
-                docker-compose build
+                cd PracticalProject
+                git pull
+                export BUILD_NUMBER="${build}"
+                #scp ./nginx/nginx.conf
+                docker stack deploy --compose-file docker-compose.yaml stack
                 '''
 			}
 		}
