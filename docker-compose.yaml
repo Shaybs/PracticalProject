@@ -57,7 +57,7 @@ services:
     build: CVCGenerator/
 
   nginx:
-    image: ansible-new-app:5000/nginx:latest
+    image: nginx:latest
     deploy:
       replicas: 3
     container_name: nginx
