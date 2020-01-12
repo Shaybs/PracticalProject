@@ -21,11 +21,12 @@ def mocked_requests_get(*args, **kwargs):
     return MockResponse(None, 404)
 
 class ResponseTestClass(unittest.TestCase):
-	@mock.patch('requests.get', side_effect=mocked_requests_get)
-	def test_PK(self, mock_get):
+    @mock.patch('requests.get', side_effect=mocked_requests_get)
+    def test_PK(self, mock_get):
         pre_ibanPK = requests.get('http://country-service:5001/post-iban-4/').json()
         self.assertEqual(ibanPK, {"IBAN": "PK67"})
 
+    
     @mock.patch('requests.get', side_effect=mocked_requests_get)
     def test_IT(self, mock_get):
         pre_ibanIT = requests.get('http://country-service:5001/post-iban-8/').json()
