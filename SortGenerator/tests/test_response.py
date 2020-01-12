@@ -46,52 +46,52 @@ class ResponseTestClass(unittest.TestCase):
 		self.assertEqual(ibanPK, {"Sort": "70-71-65"})
 	
 	@mock.patch('requests.get', side_effect=mocked_requests_get)
-	def test_BL(self, mock_get)
+	def test_BL(self, mock_get):
 		pre_ibanIT = requests.get('http://country-service:5004/post-sort-BL/').json()
 		self.assertEqual(ibanPK, {"Sort": "71-83-93"})
 
 	@mock.patch('requests.get', side_effect=mocked_requests_get)
-	def test_UK(self, mock_get)
+	def test_UK(self, mock_get):
 		pre_ibanIT = requests.get('http://country-service:5004/post-sort-UK/').json()
 		self.assertEqual(ibanPK, {"Sort": "72-89-37"})
 
 	@mock.patch('requests.get', side_effect=mocked_requests_get)
-	def test_UE(self, mock_get)
+	def test_UE(self, mock_get):
 		pre_ibanIT = requests.get('http://country-service:5004/post-sort-UE/').json()
 		self.assertEqual(ibanPK, {"Sort": "73-49-59"})
 
 	@mock.patch('requests.get', side_effect=mocked_requests_get)
-	def test_SK(self, mock_get)
+	def test_SK(self, mock_get):
 		pre_ibanIT = requests.get('http://country-service:5004/post-sort-SK/').json()
 		self.assertEqual(ibanPK, {"Sort": "74-53-45"})
 
 	@mock.patch('requests.get', side_effect=mocked_requests_get)
-	def test_IT(self, mock_get)
+	def test_IT(self, mock_get):
 		pre_ibanIT = requests.get('http://country-service:5004/post-sort-IT/').json()
 		self.assertEqual(ibanPK, {"Sort": "75-50-93"})
 
 	@mock.patch('requests.get', side_effect=mocked_requests_get)
-	def test_CH(self, mock_get)
+	def test_CH(self, mock_get):
 		pre_ibanIT = requests.get('http://country-service:5004/post-sort-CH/').json()
 		self.assertEqual(ibanPK, {"Sort": "76-83-57"})
 
 	@mock.patch('requests.get', side_effect=mocked_requests_get)
-	def test_IN(self, mock_get)
+	def test_IN(self, mock_get):
 		pre_ibanIT = requests.get('http://country-service:5004/post-sort-IN/').json()
 		self.assertEqual(ibanPK, {"Sort": "77-49-08"})
 
 	@mock.patch('requests.get', side_effect=mocked_requests_get)
-	def test_SG(self, mock_get)
+	def test_SG(self, mock_get):
 		pre_ibanIT = requests.get('http://country-service:5004/post-sort-SG/').json()
 		self.assertEqual(ibanPK, {"Sort": "77-95-80"})
 
 	@mock.patch('requests.get', side_effect=mocked_requests_get)
-	def test_DK(self, mock_get)
+	def test_DK(self, mock_get):
 		pre_ibanIT = requests.get('http://country-service:5004/post-sort-DK/').json()
 		self.assertEqual(ibanPK, {"Sort": "78-35-89"})
 
 	@mock.patch('requests.get', side_effect=mocked_requests_get)
-	def test_SW(self, mock_get)
+	def test_SW(self, mock_get):
 		pre_ibanIT = requests.get('http://country-service:5004/post-sort-SW/').json()
 		self.assertEqual(ibanPK, {"Sort": "79-08-60"})
 
