@@ -1,35 +1,35 @@
 from application import app
 import unittest
+from flask_testing import TestCase
+import requests
+from unittest import mock
 
-class Test_Responses(TestCase):
 
-	#Test the HTTP response for the account page
-	def  test_post_account_view(self):
-		response = self.client.get(url_for('get_test'))
-		self.assertEqual(response.status_code, 200)
+def mocked_requests_get(*args, **kwargs):
+    class MockResponse:
+        def __init__(self, json_data, status_code):
+            self.json_data = json_data
+            self.status_code = status_code 
 
-	#Test the random number generation
-	def test_post_account_1(self):
-		response = self.client.get(url_for('post_test'))
-		self.assertEqual(response.count(), 1)
+        def json(self):
+            return self.json_data
 
-	#Test the random number generation
-	def test_post_account_6(self):
-		response = self.client.get(url_for('post_test_4'))
-		self.assertEqual(response.count(), 4)
+    if args[0] == 'http://country-service:5001/post-iban-4/':
+    	return MockResponse({"IBAN": "PK67"}, 200)
+    elif args[0] == 'http://country-service:5001/post-iban-8/':
+    	return MockResponse({"IBAN": "IT56 NKJS"}, 200)
 
-	#Test the random number generation
-	def test_post_account_8(self):
-		response = self.client.get(url_for('post_test_8'))
-		self.assertEqual(response.count(), 8)
+    return MockResponse(None, 404)
+
+class ResponseTestClass(unittest.TestCase):
+	@mock.patch('requests.get', side_effect=mocked_requests_get)
+	def test_PK(self, mock_get):
+		#Assert requests.get calls
+		ibanPK = requests.get('http://country-service:5001/post-iban-4/').json()
+		self.assertEqual(ibanPK, {"IBAN": "PK67"})
+		ibanPK==IT = requests.get('http://country-service:5001/post-iban-8/').json()
+		self.assertEqual(ibanPK, {"IBAN": "IT56 NKJS"})
 
 if __name__ == '__main__':
 	unittest.main()
 
-
-#Is it successfully connecting to the central server
-#Is it recieving an object
-#Is it generating a pre-amble for the IBAN
-#Is it generating 4 random characters?
-#Is it generating 8 random characters
-#Are the characters being sent to the central server?
