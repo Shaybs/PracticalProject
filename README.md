@@ -111,7 +111,7 @@ Docker allowed the disuse of virtual environments, it also allowed very quick de
 
 During the Sprint phase more more test considerations were taken into account. In total over 30 tests were written and tested for all the services. The coverage reports are available in the appendix. The Front End test is shown:
 
-![Test Log](/Documents/FrontEndTest.jpg)
+![Test Log](/Documents/FrontEndTest.png)
 
 This resulted in the following pipeline:
 
