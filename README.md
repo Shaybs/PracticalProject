@@ -1,5 +1,9 @@
 # Book Review Web Application
 
+### Application Setup
+
+
+
 ### Agile Methodology
 
 Elements of Agile and Scrum will be utilised in this project. Since this is an individual project, the Agile role, events and artefacts will be defined as follows:
@@ -138,24 +142,24 @@ EPIC I: USER STORY I:
 
 SORT GENERATOR SERVICE TEST:
 
-![SORT TEST](/Documents/SortTest.jpg)
+![SORT TEST](/Documents/SortTest.png)
 
 CVC GENERATOR SERVICE TEST:
 
-![CVC Test](/Documents/CVCTest.jpg)
+![CVC Test](/Documents/CVCTest.png)
 
 IBAN PREAMBLE GENERATOR SERVICE TEST:
 
-![PREAMBLE TEST](/Documents/CountryTest.jpg)
+![PREAMBLE TEST](/Documents/CountryTest.png)
 
 ACCOUNT GENERATOR SERVICE TEST:
 
-![Account Test](/Documents/AccountTest.jpg)
+![Account Test](/Documents/AccountTest.png)
 
 CARD
 
-![Card Test](/Documents/CardTest.jpg)
+![Card Test](/Documents/CardTest.png)
 
 CENTRAL
 
-![Central Service Test](/Documents/CentralTest.jpg)
+![Central Service Test](/Documents/CentralTest.png)
