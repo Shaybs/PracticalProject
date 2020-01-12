@@ -106,6 +106,11 @@ class TestViews(TestBase):
 		response = self.client.get(url_for('account'))
 		self.assertEqual(response.status_code, 302)
 
+	#Test the HTTP response for the account page
+	def  test_account_view(self):
+		response = self.client.get(url_for('accountgenerator'))
+		self.assertEqual(response.status_code, 302)
+
 	#Test the HTTP response for the logout page
 	def  test_logout_view(self):
 		response = self.client.get(url_for('logout'))
@@ -178,7 +183,6 @@ class TestLogin(TestBase):
 		return self.client.get(url_for('logout'), follow_redirects=True)
 
 
-
 def mocked_requests_get(*args, **kwargs):
     class MockResponse:
         def __init__(self, json_data, status_code):
@@ -188,32 +192,12 @@ def mocked_requests_get(*args, **kwargs):
         def json(self):
             return self.json_data
 
-    if args[0] == 'http://countries:5000/':
-    	countries_json = {
-    	"options": [
-    	{
-    	"code": "ZA",
-    	"name": "South Africa"
-    	},
-    	{
-    	"code": "TG",
-    	"name": "Togo"
-    	},
-    	{
-    	"code": "YE",
-    	"name": "Yemen"
-    	},
-    	{
-    	"code": "NL",
-    	"name": "Netherlands"
-    	}
-    	],
-    	"image": "YE"
-    	}
-
-    	return MockResponse(countries_json, 200)
-    elif args[0] == 'http://temperature:5000/':
-    	return MockResponse({"temperature": "5.2"}, 200)
+    if args[0] == 'http://central-service:5000/post-iban-PK/':
+    	return MockResponse({"IBAN": "PK78NVYV605291235VEY9REJVH6K"}, 200)
+    elif args[0] == 'http://central-service:5000/post-iban-IT/':
+    	return MockResponse({"IBAN":"IT78CCQE6585255894U347013A950"}, 200)
+    elif args[0] == 'http://central-service:5000/post-iban-DK/':
+    	return MockResponse({"IBAN":"DK22FSFT683592381GDZ3RUI53M93A"}, 200)
 
     return MockResponse(None, 404)
 
@@ -239,8 +223,8 @@ class ResponseTestClass(unittest.TestCase):
 	@mock.patch('requests.get', side_effect=mocked_requests_get)
 	def test_PK(self, mock_get):
 		#Assert requests.get calls
-		ibanPK = requests.get('http://temperature:5000/').json()
-		self.assertEqual(ibanPK, {"temperature": "5.2"})
+		ibanPK = requests.get('http://central-service:5000/post-iban-PK/').json()
+		self.assertEqual(ibanPK, {"IBAN": "PK78NVYV605291235VEY9REJVH6K"})
 	@mock.patch('requests.get', side_effect=mocked_requests_get)
 	def test_IT(self, mock_get):
 		ibanIT = requests.get('http://central-service:5000/post-iban-IT').json()
