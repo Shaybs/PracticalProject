@@ -2,7 +2,7 @@
 
 ### Application Setup
 
-
+To set up this application two virtual machines should be instantiated. After which the ansible playbook, 'playbook-inistialisation.yaml' should be run, ensure that the relevant IP addresses have been amended in the inventory file. 
 
 ### Agile Methodology
 

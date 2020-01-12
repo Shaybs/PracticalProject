@@ -28,7 +28,7 @@ def test_iban4():
 
 @app.route('/get-iban8', methods=['GET','POST'])
 def test_iban8():
-	iban = requests.post('http://country-service:5001/post-iban-8', json={"Country":"Belarus"})
+	iban = requests.post('http://country-service:5001/post-iban-6', json={"Country":"Belarus"})
 	if iban.ok:
 		return iban.json()["IBAN"]
 	return "OK\n"
