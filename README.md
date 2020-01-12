@@ -105,11 +105,11 @@ First the connectivity between different applications using the requests and req
 
 Docker allowed the disuse of virtual environments, it also allowed very quick deployment of containers. After utilising docker, docker-compose was utilised to build images and push them to a registry on the Jenkins VM. The images were numbered using the built in environment variable of jenkins, called ‘BUILD_NUMBER’. This was followed by the use of docker stacks and docker stack deploy on the App VM, referencing the registry’s address for quick deployment of the images. Multiple replicas of each container are created and the service maintained allowing for rolling updates.
 
-During the Sprint phase more more test considerations were taken into account. In total over X tests were written and tested:
+During the Sprint phase more more test considerations were taken into account. In total over 30 tests were written and tested for all the services. The coverage reports are available in the appendix. The Front End test is shown:
 
-![Test Log](/Documents/Test.jpg)
+![Test Log](/Documents/FrontEndTest.jpg)
 
-This was followed by integration with between the deployment VMs and Jenkins resulting in the following pipeline:
+This resulted in the following pipeline:
 
 ![CI Pipeline](/Documents/CIPipeline.jpg)
 
@@ -136,3 +136,26 @@ EPIC I: USER STORY I:
 
 ![Epic I: User Story I](/Documents/EPICIUSI.jpg)
 
+SORT GENERATOR SERVICE TEST:
+
+![SORT TEST](/Documents/SortTest.jpg)
+
+CVC GENERATOR SERVICE TEST:
+
+![CVC Test](/Documents/CVCTest.jpg)
+
+IBAN PREAMBLE GENERATOR SERVICE TEST:
+
+![PREAMBLE TEST](/Documents/CountryTest.jpg)
+
+ACCOUNT GENERATOR SERVICE TEST:
+
+![Account Test](/Documents/AccountTest.jpg)
+
+CARD
+
+![Card Test](/Documents/CardTest.jpg)
+
+CENTRAL
+
+![Central Service Test](/Documents/CentralTest.jpg)
