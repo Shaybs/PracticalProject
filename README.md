@@ -117,6 +117,12 @@ This resulted in the following pipeline:
 
 ![CI Pipeline](/Documents/CIPipeline.jpg)
 
+### Services Architecture
+
+The user connects to the website, which is run by Nginx. Nginx connects to the front end service. This service renders the website and connects to the SQL database. When an account is generated, the front end service connects to the central service. This service seeks the cvc, sort code, account, card number and iban preamble from the cvc service, sort service, account service, card service and country services, respectively. The account and country services have two implementations. The central service produces the iban by combining the iban preamble and the account strings based on the country the user has selected. If it is Pakistan, Belarus, United Kingdom, United Arab Emirates or South Korea, a 12 character string will be added. If the user selects Italy, a 13 character string will be added. If the user selects China, India, Singapore, Denmark or Singapore, a 14 character string will be added. This results in the following services architecture:
+
+![Services Architecture](/Documents/ServicesArchitecture.jpg)
+
 ### Further Improvements and Future
 
 There are many improvements that can be made to this application. For example, there could be more stringent policies for who can open or generate an account. Other features such as the ability to make transactions can be added. More tests including tests of how the application behaves after a user has logged in could be added. Security could also be enhanced through the addition of dummy data to passwords before hashing and through the randomisation of the dummy data to ensure there are no patterns for the dummy data.
