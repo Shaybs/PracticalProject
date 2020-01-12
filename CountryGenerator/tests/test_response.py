@@ -24,13 +24,13 @@ class ResponseTestClass(unittest.TestCase):
     @mock.patch('requests.get', side_effect=mocked_requests_get)
     def test_PK(self, mock_get):
         pre_ibanPK = requests.get('http://country-service:5001/post-iban-4/').json()
-        self.assertEqual(ibanPK, {"IBAN": "PK67"})
+        self.assertEqual(pre_ibanPK, {"IBAN": "PK67"})
 
     
     @mock.patch('requests.get', side_effect=mocked_requests_get)
     def test_IT(self, mock_get):
         pre_ibanIT = requests.get('http://country-service:5001/post-iban-8/').json()
-        self.assertEqual(ibanPK, {"IBAN": "IT56NKJS"})
+        self.assertEqual(pre_ibanIT, {"IBAN": "IT56NKJS"})
 
 if __name__ == '__main__':
 	unittest.main()
