@@ -201,24 +201,6 @@ def mocked_requests_get(*args, **kwargs):
 
     return MockResponse(None, 404)
 
-#def mocked_requests_get(*args, **kwargs):
-#	class MockResponse:
-#		def __init__(self,json_data, status_code):
-#			self.json_data = json_data
-#			self.status_code = status_code
-
-#		def json(self):
-#			return self.json_data
-
-#	if arg[0] == 'http://central-service:5000/post-iban-PK':
-#		return MockResponse({"IBAN":"PK78NVYV605291235VEY9REJVH6K"}, 200)
-#	elif arg[0] == 'http://central-service:5000/post-iban-IT':
-#		return MockResponse({"IBAN":"IT78CCQE6585255894U347013A950"}, 200)
-#	elif arg[0] == 'http://central-service:5000/post-iban-DK':
-#		return MockResponse({"IBAN":"DK22FSFT683592381GDZ3RUI53M93A"}, 200)
-#
-#	return MockResponse(None, 404)
-
 class ResponseTestClass(unittest.TestCase):
 	@mock.patch('requests.get', side_effect=mocked_requests_get)
 	def test_PK(self, mock_get):
