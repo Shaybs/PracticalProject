@@ -105,7 +105,7 @@ First the connectivity between different applications using the requests and req
 
 Docker allowed the disuse of virtual environments, it also allowed very quick deployment of containers. After utilising docker, docker-compose was utilised to build images and push them to a registry on the Jenkins VM. The images were numbered using the built in environment variable of jenkins, called ‘BUILD_NUMBER’. This was followed by the use of docker stacks and docker stack deploy on the App VM, referencing the registry’s address for quick deployment of the images. Multiple replicas of each container are created and the service maintained allowing for rolling updates.
 
-During the Sprint phase more more test considerations were taken into account. In total over 30 tests were written and tested:
+During the Sprint phase more more test considerations were taken into account. In total over X tests were written and tested:
 
 ![Test Log](/Documents/Test.jpg)
 
