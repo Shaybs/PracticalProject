@@ -22,7 +22,7 @@ def mocked_requests_get(*args, **kwargs):
     return MockResponse(None, 404)
 
 class ResponseTestClass(unittest.TestCase):
-	@mock.patch('requests.get', side_effect=mocked_requests_get)
+    @mock.patch('requests.get', side_effect=mocked_requests_get)
 	def test_account(self, mock_get):
 		account6 = requests.get('http://account-service:5002/post-account-6').json()
 		self.assertEqual(account6, {"Account": "609292"})
