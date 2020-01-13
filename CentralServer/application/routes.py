@@ -42,7 +42,7 @@ def post_iban():
 	cardnumber = card_cardnumber.json()["CardNumber"]
 	card_sort = requests.post('http://sort-service:5004/post-sort', json={"Country":country})
 	sort = card_sort.json()["Sort"]
-	account = requests.post('http://account-service:5002/post-account-6', json={"Country":country})
+	account = requests.post('http://account-service:5002/post-account-8', json={"Country":country})
 	iban_account = account.json()["Account"]
 	iban_preambleservice = requests.post('http://country-service:5001/post-iban-8', json={"Country":country})
 	iban_preamble = iban_preambleservice.json()["IBAN"]
