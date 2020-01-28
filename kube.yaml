@@ -14,7 +14,7 @@ spec:
    spec:
     containers:
     - name: frontend
-      image: jenkins-kube:5000/frontend:19
+      image: jenkins-kube:5000/frontend:${BUILD_NUMBER}
 
 ---
 apiVersion: apps/v1
@@ -33,7 +33,7 @@ spec:
    spec:
     containers:
     - name: central-service
-      image: jenkins-kube:5000/central-service:19
+      image: jenkins-kube:5000/central-service:${BUILD_NUMBER}
 
 ---
 apiVersion: apps/v1
@@ -52,7 +52,7 @@ spec:
    spec:
     containers:
     - name: cardnumber-service
-      image: jenkins-kube:5000/cardnumber-service:19
+      image: jenkins-kube:5000/cardnumber-service:${BUILD_NUMBER}
 
 ---
 apiVersion: apps/v1
@@ -71,7 +71,7 @@ spec:
    spec:
     containers:
     - name: account-service
-      image: jenkins-kube:5000/account-service:19
+      image: jenkins-kube:5000/account-service:${BUILD_NUMBER}
 
 ---
 apiVersion: apps/v1
@@ -90,7 +90,7 @@ spec:
    spec:
     containers:
     - name: cvc-service
-      image: jenkins-kube:5000/cvc-service:19
+      image: jenkins-kube:5000/cvc-service:${BUILD_NUMBER}
 
 ---
 apiVersion: apps/v1
@@ -109,7 +109,7 @@ spec:
    spec:
     containers:
     - name: country-service
-      image: jenkins-kube:5000/country-service:19
+      image: jenkins-kube:5000/country-service:${BUILD_NUMBER}
 
 ---
 apiVersion: apps/v1
@@ -128,7 +128,7 @@ spec:
    spec:
     containers:
     - name: cvcgenerator
-      image: jenkins-kube:5000/sort-service:19
+      image: jenkins-kube:5000/sort-service:${BUILD_NUMBER}
 
 ---
 apiVersion: v1
