@@ -2,6 +2,7 @@
   connection: local
   become: true
   tasks:
+  - debug: msg="{{ lookup('env','BUILD_NUMBER') }}"
   - git:
       repo: 'https://github.com/Shaybs/PracticalProject.git'
       dest: /home/jenkins/PracticalProject
