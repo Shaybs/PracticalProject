@@ -3,14 +3,15 @@ services:
   frontend-service:
     image: ansible-jenkins:5000/frontend:${BUILD_NUMBER}
     container_name: frontend
-    build: FrontEnd/
-    environment:
-    - USERNAME=${USERNAME}
-    - PASSWORD=${PASSWORD}
-    - MYSQL_URL=${MYSQL_URL}
-    - MYSQL_DB=${MYSQL_DB}
-    - MYSQL_DB_TEST=${MYSQL_DB_TEST}
-    - SECRET_KEY=${SECRET_KEY}
+    build:
+      context: ./FrontEnd/
+      args:
+      - USERNAME=${USERNAME}
+      - PASSWORD=${PASSWORD}
+      - MYSQL_URL=${MYSQL_URL}
+      - MYSQL_DB=${MYSQL_DB}
+      - MYSQL_DB_TEST=${MYSQL_DB_TEST}
+      - SECRET_KEY=${SECRET_KEY}
 
   central-service:
     image: jenkins-kube:5000/central-service:${BUILD_NUMBER}
@@ -25,7 +26,7 @@ services:
   account-service:
     image: jenkins-kube:5000/account-service:${BUILD_NUMBER}
     container_name: account
-    build: AccountGenerator/
+    build: AccountGenerator
 
   sort-service:
     image: jenkins-kube:5000/sort-service:${BUILD_NUMBER}
