@@ -1,7 +1,7 @@
 version: "3.7"
 services:
   frontend-service:
-    image: ansible-jenkins:5000/frontend:${BUILD_NUMBER}
+    image: jenkins-kube:5000/frontend:${BUILD_NUMBER}
     container_name: frontend
     build:
       context: ./FrontEnd/
