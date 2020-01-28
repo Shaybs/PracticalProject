@@ -1,33 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: frontend
+  name: frontend-service
 spec:
   replicas: 2
   selector:
    matchLabels:
-    app: frontend
+    app: frontend-service
   template: 
    metadata:
     labels:
-     app: frontend
+     app: frontend-service
    spec:
     containers:
-    - name: frontend
-      image: jenkins-kube:5000/frontend:1
-      env:
-      - name: USERNAME
-        value: ${USERNAME}
-      - name: PASSWORD
-        value: ${PASSWORD}
-      - name: MYSQL_URL
-        value: ${MYSQL_URL}
-      - name: MYSQL_DB
-        value: ${MYSQL_DB}
-      - name: MYSQL_DB_TEST
-        value: ${MYSQL_DB_TEST}
-      - name: SECRET_KEY
-        value: ${SECRET_KEY}
+    - name: frontend-service
+      image: jenkins-kube:5000/frontend:19
 
 ---
 apiVersion: apps/v1
@@ -46,7 +33,7 @@ spec:
    spec:
     containers:
     - name: central-service
-      image: jenkins-kube:5000/central-service:1
+      image: jenkins-kube:5000/central-service:19
 
 ---
 apiVersion: apps/v1
@@ -65,7 +52,7 @@ spec:
    spec:
     containers:
     - name: cardnumber-service
-      image: jenkins-kube:5000/cardnumber-service:1
+      image: jenkins-kube:5000/cardnumber-service:19
 
 ---
 apiVersion: apps/v1
@@ -84,7 +71,7 @@ spec:
    spec:
     containers:
     - name: account-service
-      image: jenkins-kube:5000/account-service:1
+      image: jenkins-kube:5000/account-service:19
 
 ---
 apiVersion: apps/v1
@@ -103,7 +90,7 @@ spec:
    spec:
     containers:
     - name: cvc-service
-      image: jenkins-kube:5000/cvc-service:1
+      image: jenkins-kube:5000/cvc-service:19
 
 ---
 apiVersion: apps/v1
@@ -122,7 +109,7 @@ spec:
    spec:
     containers:
     - name: country-service
-      image: jenkins-kube:5000/country-service:1
+      image: jenkins-kube:5000/country-service:19
 
 ---
 apiVersion: apps/v1
@@ -141,7 +128,7 @@ spec:
    spec:
     containers:
     - name: cvcgenerator
-      image: jenkins-kube:5000/sort-service:1
+      image: jenkins-kube:5000/sort-service:19
 
 ---
 apiVersion: v1
