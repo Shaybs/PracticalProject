@@ -3,7 +3,7 @@ services:
   frontend-service:
     image: jenkins-kube:5000/frontend:${BUILD_NUMBER}
     container_name: frontend
-    build: FrontEnd
+    build:
       context: ./FrontEnd/
       args:
         - USERNAME=${USERNAME}
