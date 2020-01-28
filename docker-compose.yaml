@@ -3,15 +3,14 @@ services:
   frontend-service:
     image: jenkins-kube:5000/frontend:${BUILD_NUMBER}
     container_name: frontend
-    build:
-      context: ./FrontEnd/
-      args:
-      - USERNAME=${USERNAME}
-      - PASSWORD=${PASSWORD}
-      - MYSQL_URL=${MYSQL_URL}
-      - MYSQL_DB=${MYSQL_DB}
-      - MYSQL_DB_TEST=${MYSQL_DB_TEST}
-      - SECRET_KEY=${SECRET_KEY}
+    build: FrontEnd/
+    environment:
+    - USERNAME=${USERNAME}
+    - PASSWORD=${PASSWORD}
+    - MYSQL_URL=${MYSQL_URL}
+    - MYSQL_DB=${MYSQL_DB}
+    - MYSQL_DB_TEST=${MYSQL_DB_TEST}
+    - SECRET_KEY=${SECRET_KEY}
 
   central-service:
     image: jenkins-kube:5000/central-service:${BUILD_NUMBER}
