@@ -9,3 +9,4 @@
 /playbook-swarm.yaml
 /playbook-environment.yaml
 /deploy.yaml
+/inventory
