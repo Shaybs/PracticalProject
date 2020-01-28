@@ -6,12 +6,12 @@ services:
     build:
       context: ./FrontEnd/
       args:
-        - USERNAME=${USERNAME}
-        - PASSWORD=${PASSWORD}
-        - MYSQL_URL=${MYSQL_URL}
-        - MYSQL_DB=${MYSQL_DB}
-        - MYSQL_DB_TEST=${MYSQL_DB_TEST}
-        - SECRET_KEY=${SECRET_KEY}
+      - USERNAME=${USERNAME}
+      - PASSWORD=${PASSWORD}
+      - MYSQL_URL=${MYSQL_URL}
+      - MYSQL_DB=${MYSQL_DB}
+      - MYSQL_DB_TEST=${MYSQL_DB_TEST}
+      - SECRET_KEY=${SECRET_KEY}
 
   central-service:
     image: jenkins-kube:5000/central-service:${BUILD_NUMBER}
