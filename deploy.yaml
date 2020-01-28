@@ -5,6 +5,7 @@
       repo: 'https://github.com/Shaybs/PracticalProject.git'
       dest: /home/jenkins/PracticalProject
       version: development-kube
+      update: yes
   - name: build images
     shell:
       chdir: /home/jenkins/PracticalProject
