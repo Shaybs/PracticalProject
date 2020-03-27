@@ -14,7 +14,7 @@ The Agile Events will consist of a single Sprint, in which the entire project wi
 
 In the sixth week new languages such as Powershell and Linux Bash were introduced. Different programming techniques such as if statements and for loops were shown. The techniques used to connect, create and delete instances were demonstrated. Further, the the requests and request libraries and how these libraries are used to send and receive json objects was shown.
 In the seventh week docker and the concept of containers, how docker identifies containers and the purpose and benefits of containerisation was presented. The notions of dockerfiles, registries, volumes, nginx and docker compose were exhibited.
-In the eighth week, docker swarm and how it can be used to have multiple containers across multiple nodes master nodes was showcased. Later Ansible was taught to enable quick set up of environments for deployment and test.
+In the eighth week, docker swarm and how it can be used to have multiple containers across multiple nodes and the master node was showcased. Later Ansible was taught to enable quick set up of environments for testing and deployment.
 
 ### Project Overview
 
@@ -63,11 +63,11 @@ The MoSCoW has been listed below:
 
 ### Introduction
 
-The project aims to create a banking application that allows users to generate an account number, cvc, card number and IBAN. The project aims to utilise a service architecture, containers and replicas for rolling updates.
+The project aims to create a banking application that allows users to generate an account number, cvc, card number and IBAN. The project aims to utilise a microservices architecture, containers and replicas for rolling updates.
 
 ### Personal Project Goals
 
-The Keep it Simple Stupid (KISS) method was adhered to. Hence, the entire project was designed to keep the GUI and user experience as simple as possible. It primarily aims to demonstrate that an account can be generated using a service architecture; and the application can updated utilising the required DevOps tools.
+The Keep it Simple Stupid (KISS) method was adhered to. Hence, the entire project was designed to keep the GUI and user experience as simple as possible. It primarily aims to demonstrate that an account can be generated using a service architecture; and the application can be updated utilising the required DevOps tools.
 
 ### Project
 
@@ -93,19 +93,19 @@ An  Entity Relationship Diagram was created as demonstrated below:
 
 ![ERD](/Documents/ERD.jpg)
 
-The Asana Board is during development below:
+The Asana Board is shown during development below:
 
 ![Asana Board In-progress](/Documents/AsanaInProgress.png)
 
-The board after completing all software tasks is shown below:
+The image below shows the board after completing all software tasks:
 
 ![Asana Board In-progress](/Documents/Asana.png)
 
 ### Development process
 
-The source code was connected to GitHub, which allowed version control and the ability to switch between different versions. It also allowed the project to be pulled onto different machines; and the addition and testing of new features from different machines. The program was coded in modular form with a service architecture and uploaded to a development branch. This modular form enabled quick troubleshooting throughout the processes. The Keep it Simple Stupid (KISS) methodology was followed. Hence, an incredibly simple application was ideated. Over 15 tests were written prior to the initiation of software development.
+The source code was uploaded to GitHub, which allowed version control and the ability to switch between different versions. It also allowed the project to be pulled to different machines; and the addition and testing of new features from different machines. The program was coded in modular form with a microservices architecture and uploaded to a development branch. This modular form enabled quick troubleshooting throughout the processes. The Keep it Simple Stupid (KISS) methodology was followed. Hence, an incredibly simple application was ideated. Over 15 tests were written prior to the initiation of software development.
 
-First the connectivity between different applications using the requests and request libraries was understood. After that the front end development was initiated to create a simple and easy to use GUI. A SQL database in GCP was spun up and the ERD model for the banking application was created. The last solution involved spinning up two instances and configuring the instances with ansible. There was a VM used to run Jenkins (Jenkins VM) and build images and another VM to deploy the application (App VM). The permissions for jenkins on the Jenkins VM and the environment variables on both VMs had to be manually set and the sourced, respectively.
+First the connectivity between different applications using the requests and request libraries was understood. After that the front end development was initiated to create a simple and easy to use GUI. A SQL database in GCP was spun up and the ERD model for the banking application was created. The last solution involved spinning up two instances and configuring the instances with ansible. There was a VM used to run Jenkins (Jenkins VM) and build images and another VM to deploy the application (App VM). The permissions for jenkins on the Jenkins VM and the environment variables on both VMs had to be manually set and sourced, respectively.
 
 Docker allowed the disuse of virtual environments, it also allowed very quick deployment of containers. After utilising docker, docker-compose was utilised to build images and push them to a registry on the Jenkins VM. The images were numbered using the built in environment variable of jenkins, called ‘BUILD_NUMBER’. This was followed by the use of docker stacks and docker stack deploy on the App VM, referencing the registry’s address for quick deployment of the images. Multiple replicas of each container are created and the service maintained allowing for rolling updates.
 
@@ -119,9 +119,11 @@ This resulted in the following pipeline:
 
 ### Services Architecture
 
-The user connects to the website, which is run by Nginx. Nginx connects to the front end service. This service renders the website and connects to the SQL database. When an account is generated, the front end service connects to the central service. This service seeks the cvc, sort code, account, card number and iban preamble from the cvc service, sort service, account service, card service and country services, respectively. The account and country services have two implementations. The central service produces the iban by combining the iban preamble and the account strings based on the country the user has selected. If it is Pakistan, Belarus, United Kingdom, United Arab Emirates or South Korea, a 12 character string will be added. If the user selects Italy, a 13 character string will be added. If the user selects China, India, Singapore, Denmark or Singapore, a 14 character string will be added. This results in the following services architecture:
+The user connects to the website, which is run by Nginx. Nginx connects to the front end service. This service renders the website and connects to the SQL database. When an account is generated, the front end service connects to the central service. This service seeks the cvc, sort code, account, card number and iban preamble from the cvc service, sort service, account service, card service and country services, respectively. This results in the following services architecture:
 
 ![Services Architecture](/Documents/ServicesArchitecture.jpg)
+
+The account and country services have two implementations. The central service produces the iban by combining the iban preamble and the account string. The account string is generated based on the country the user has selected. If it is Pakistan, Belarus, United Kingdom, United Arab Emirates or South Korea, a 12 character string will be added. If the user selects Italy, a 13 character string will be added. If the user selects China, India, Singapore, Denmark or Singapore, a 14 character string will be added.
 
 ### Further Improvements and Future
 
